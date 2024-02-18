@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
+  m_Name: tileCoal
+  m_EditorClassIdentifier: 
+  tileName: Coal
+  tileSprite: {fileID: 21300000, guid: 2f412f0ad9221084d83a6dd6723e3163, type: 3}
