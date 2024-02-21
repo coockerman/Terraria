@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: tileDyamond
   m_EditorClassIdentifier: 
   tileName: Dyamond
-  tileSprite: {fileID: 21300000, guid: feaf7bcafc6310b4aa0155dcacf6dde3, type: 3}
+  tileSprites:
+  - {fileID: 21300000, guid: feaf7bcafc6310b4aa0155dcacf6dde3, type: 3}
+  - {fileID: 21300000, guid: 0036969c6ba6638438805d2e86d221a2, type: 3}
