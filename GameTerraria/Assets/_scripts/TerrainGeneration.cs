@@ -22,12 +22,12 @@ public class TerrainGeneration : MonoBehaviour
     public int worldSize = 100;
     public int heightAddition = 25;
     public bool generateCaves = true;
-    public int dirtLayerHeight = 5;
+    //public int dirtLayerHeight = 5;
     public float surfaceValue = 0.25f;
-    public float heightMultiplier = 2f;
+    //public float heightMultiplier = 2f;
 
     [Header("Noise Settings")]
-    public float caveFreq = 0.05f;
+    //public float caveFreq = 0.05f;
     public float terrainFreq = 0.05f;
     public Texture2D caveNoiseTexture;
 
@@ -128,12 +128,14 @@ public class TerrainGeneration : MonoBehaviour
 
         for (int i = 0; i < worldSize; i++)
         {
-            float height = Mathf.PerlinNoise((i + seed) * terrainFreq, seed * terrainFreq) * heightMultiplier + heightAddition;
+            curBiome = GetCurrentBiome(i, 0);
+            float height = Mathf.PerlinNoise((i + seed) * curBiome.terrainFreq, seed * curBiome.terrainFreq) * curBiome.heightMultiplier + heightAddition;
             for (int j = 0; j < height; j++)
             {
-                if (j < height - dirtLayerHeight)
+                curBiome = GetCurrentBiome(i, j);
+                if (j < height - curBiome.dirtLayerHeight)
                 {
-                    tileSprite = GetCurrentBiome(i, j).tileAtlas.stone.tileSprites;
+                    tileSprite = curBiome.tileAtlas.stone.tileSprites;
                     if (ores[0].spreadTexture.GetPixel(i, j).r > 0.5f && height - j > ores[0].maxSpawnHeight)
                         tileSprite = tileAtlas.coal.tileSprites;
                     if (ores[1].spreadTexture.GetPixel(i, j).r > 0.5f && height - j > ores[1].maxSpawnHeight)
@@ -145,11 +147,11 @@ public class TerrainGeneration : MonoBehaviour
                 }
                 else if (j < height - 1)
                 {
-                    tileSprite = tileAtlas.dirt.tileSprites;
+                    tileSprite = curBiome.tileAtlas.dirt.tileSprites;
                 }
                 else
                 {
-                    tileSprite = tileAtlas.grass.tileSprites;
+                    tileSprite = curBiome.tileAtlas.grass.tileSprites;
 
                 }
 
@@ -167,11 +169,11 @@ public class TerrainGeneration : MonoBehaviour
 
                 if (j >= height - 1)
                 {
-                    int t = Random.Range(0, treeChance);
+                    int t = Random.Range(0, curBiome.treeChance);
                     if (t == 1)
                     {
                         if (worldTiles.Contains(new Vector2(i, j)))
-                            GenerateTree(i, j + 1);
+                            GenerateTree(Random.Range(curBiome.minTreeHeight, curBiome.maxTreeHeight),i, j + 1);
                     }
                     else
                     {
@@ -180,7 +182,8 @@ public class TerrainGeneration : MonoBehaviour
                         {
                             if (worldTiles.Contains(new Vector2(i, j)))
                             {
-                                PlaceTile(tileAtlas.tallGrass.tileSprites, i, j + 1);
+                                if(curBiome.tileAtlas.tallGrass != null)
+                                    PlaceTile(curBiome.tileAtlas.tallGrass.tileSprites, i, j + 1);
                             }
                         }
 
@@ -205,9 +208,9 @@ public class TerrainGeneration : MonoBehaviour
         }
         noiseTexture.Apply();
     }
-    void GenerateTree(int i, int j)
+    void GenerateTree(int treeHeight, int i, int j)
     {
-        int treeHeight = Random.Range(minTreeHeight, maxTreeHeight);
+        //int treeHeight = Random.Range(minTreeHeight, maxTreeHeight);
         for (int t = 0; t < treeHeight; t++)
         {
             PlaceTile(tileAtlas.log.tileSprites, i, j + t);
