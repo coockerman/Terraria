@@ -800,6 +800,8 @@ MonoBehaviour:
     size: 0.6
     maxSpawnHeight: 30
     spreadTexture: {fileID: 1082825673}
+  biomeCols:
+  - {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1680373308
 Transform:
   m_ObjectHideFlags: 0
