@@ -665,13 +665,11 @@ MonoBehaviour:
   - biomeName: Snow
     biomeCol: {r: 1, g: 1, b: 1, a: 1}
     tileAtlas: {fileID: 11400000, guid: 5362a008597120a49b8f79cae8e3fd0d, type: 2}
-    terrainFreq: 0.04
-    caveFreq: 0.05
     caveNoiseTexture: {fileID: 1935653751}
     generateCaves: 0
     dirtLayerHeight: 6
     surfaceValue: 0.2
-    heightMultiplier: 25
+    heightMultiplier: 35
     treeChance: 16
     minTreeHeight: 4
     maxTreeHeight: 7
@@ -680,23 +678,19 @@ MonoBehaviour:
   - biomeName: Desert
     biomeCol: {r: 1, g: 0.84313726, b: 0, a: 1}
     tileAtlas: {fileID: 11400000, guid: f6da3692bc844d14ca672fbb7f6b8f59, type: 2}
-    terrainFreq: 0.04
-    caveFreq: 0.05
     caveNoiseTexture: {fileID: 1734518487}
     generateCaves: 0
     dirtLayerHeight: 5
     surfaceValue: 0.2
     heightMultiplier: 25
     treeChance: 15
-    minTreeHeight: 3
-    maxTreeHeight: 5
+    minTreeHeight: 2
+    maxTreeHeight: 6
     tallGrassChange: 2
     ores: []
   - biomeName: Grass
     biomeCol: {r: 0.12156863, g: 1, b: 0, a: 1}
     tileAtlas: {fileID: 11400000, guid: 8f8e04615d9879140b773b828b748e89, type: 2}
-    terrainFreq: 0.04
-    caveFreq: 0.05
     caveNoiseTexture: {fileID: 1169188401}
     generateCaves: 0
     dirtLayerHeight: 5
@@ -730,13 +724,11 @@ MonoBehaviour:
   - biomeName: Forest
     biomeCol: {r: 0, g: 0.42352942, b: 0.0627451, a: 1}
     tileAtlas: {fileID: 11400000, guid: 4b6c0574f3d4fb246b7e07e0281c22e3, type: 2}
-    terrainFreq: 0.04
-    caveFreq: 0.05
     caveNoiseTexture: {fileID: 455778073}
     generateCaves: 0
     dirtLayerHeight: 5
     surfaceValue: 0.3
-    heightMultiplier: 25
+    heightMultiplier: 30
     treeChance: 5
     minTreeHeight: 7
     maxTreeHeight: 11
@@ -775,10 +767,12 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   biomeMap: {fileID: 1052403989}
   chunkSize: 20
-  worldSize: 200
+  worldSize: 100
   heightAddition: 50
   generateCaves: 1
   caveNoiseTexture: {fileID: 250698511}
+  terrainFreq: 0.02
+  caveFreq: 0.08
   ores:
   - name: Cold
     frequency: 0
@@ -800,8 +794,6 @@ MonoBehaviour:
     size: 0.6
     maxSpawnHeight: 30
     spreadTexture: {fileID: 1082825673}
-  biomeCols:
-  - {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1680373308
 Transform:
   m_ObjectHideFlags: 0

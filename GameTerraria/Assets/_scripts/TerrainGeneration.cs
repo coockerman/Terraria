@@ -24,36 +24,30 @@ public class TerrainGeneration : MonoBehaviour
 
     [Header("Noise Settings")]
     public Texture2D caveNoiseTexture;
+    public float terrainFreq = 0.05f;
+    public float caveFreq = 0.05f;
 
-    [Header("Ore settings")]
+    //[Header("Ore settings")]
     public OreClass[] ores;
 
     private GameObject[] worldChunks;
     private List<Vector2> worldTiles = new List<Vector2>();
     private BiomeClass curBiome;
-    public Color[] biomeCols;
+    private Color[] biomeCols;
 
-
-    //private void OnValidate()
-    //{
-
-    //    DrawTexture();
-    //    DrawCavesAndOres();
-
-    //}
     private void Start()
     {
+        seed = Random.Range(-10000, 10000);
         for (int i = 0; i < ores.Length; i++)
         {
             ores[i].spreadTexture = new Texture2D(worldSize, worldSize);
         }
 
-        biomeCols = new Color[biomes.Length];  
+        biomeCols = new Color[biomes.Length];
         for (int i = 0; i < biomes.Length; i++)
         {
             biomeCols[i] = biomes[i].biomeCol;
         }
-        seed = Random.Range(-10000, 10000);
         DrawTexture();
         DrawCavesAndOres();
         CreateChunks();
@@ -62,32 +56,26 @@ public class TerrainGeneration : MonoBehaviour
     public void DrawCavesAndOres()
     {
         caveNoiseTexture = new Texture2D(worldSize, worldSize);
+        float v;
+        float o;
         for (int x = 0; x < worldSize; x++)
         {
             for (int y = 0; y < worldSize; y++)
             {
                 curBiome = GetCurrentBiome(x, y);
-                float v = Mathf.PerlinNoise((x + seed) * curBiome.caveFreq, (y + seed) * curBiome.caveFreq);
+                v = Mathf.PerlinNoise((x + seed) * caveFreq, (y + seed) * caveFreq);
                 if (v > curBiome.surfaceValue)
                     caveNoiseTexture.SetPixel(x, y, Color.white);
                 else
                     caveNoiseTexture.SetPixel(x, y, Color.clear);
-            }
-        }
-        caveNoiseTexture.Apply();
 
-        for (int x = 0; x < worldSize; x++)
-        {
-            for (int y = 0; y < worldSize; y++)
-            {
-                curBiome = GetCurrentBiome(x, y);
                 for (int i = 0; i < ores.Length; i++)
                 {
                     ores[i].spreadTexture.SetPixel(x, y, Color.clear);
                     if (curBiome.ores.Length >= i + 1)
                     {
-                        float v = Mathf.PerlinNoise((x + seed) * curBiome.ores[i].frequency, (y + seed) * curBiome.ores[i].frequency);
-                        if (v > curBiome.ores[i].size)
+                        o = Mathf.PerlinNoise((x + seed) * curBiome.ores[i].frequency, (y + seed) * curBiome.ores[i].frequency);
+                        if (o > curBiome.ores[i].size)
                             ores[i].spreadTexture.SetPixel(x, y, Color.white);
 
                         ores[i].spreadTexture.Apply();
@@ -96,11 +84,11 @@ public class TerrainGeneration : MonoBehaviour
                 }
             }
         }
+        caveNoiseTexture.Apply();
     }
     private void DrawTexture()
     {
         biomeMap = new Texture2D(worldSize, worldSize);
-        DrawBiomeTexture();
 
         for (int i = 0; i < biomes.Length; i++)
         {
@@ -108,31 +96,10 @@ public class TerrainGeneration : MonoBehaviour
             for (int j = 0; j < biomes[i].ores.Length; j++)
             {
                 biomes[i].ores[j].spreadTexture = new Texture2D(worldSize, worldSize);
-
-            }
-
-            GenerateNoiseTexture(biomes[i].caveFreq, biomes[i].surfaceValue, biomes[i].caveNoiseTexture);
-
-            for (int j = 0; j < biomes[i].ores.Length; j++)
-            {
                 GenerateNoiseTexture(biomes[i].ores[j].frequency, biomes[i].ores[j].size, biomes[i].ores[j].spreadTexture);
+
             }
         }
-    }
-
-    private void DrawBiomeTexture()
-    {
-        for (int x = 0; x < biomeMap.width; x++)
-        {
-            for (int y = 0; y < biomeMap.height; y++)
-            {
-                float v = Mathf.PerlinNoise((x + seed) * biomeFrequency, (y + seed) * biomeFrequency);
-                Color col = biomeGradient.Evaluate(v);
-                biomeMap.SetPixel(x, y, col);
-            }
-        }
-        biomeMap.Apply();
-
     }
 
     public void CreateChunks()
@@ -150,14 +117,7 @@ public class TerrainGeneration : MonoBehaviour
     }
     public BiomeClass GetCurrentBiome(int x, int y)
     {
-        //for (int i = 0; i < biomes.Length; i++)
-        //{
-        //    if (biomes[i].biomeCol == biomeMap.GetPixel(x, y))
-        //    {
-        //        return biomes[i];
-        //    }
-        //}
-        if(System.Array.IndexOf(biomeCols, biomeMap.GetPixel(x, y)) > 0)
+        if (System.Array.IndexOf(biomeCols, biomeMap.GetPixel(x, y)) >= 0)
         {
             return biomes[System.Array.IndexOf(biomeCols, biomeMap.GetPixel(x, y))];
         }
@@ -173,7 +133,7 @@ public class TerrainGeneration : MonoBehaviour
             for (int j = 0; j < worldSize; j++)
             {
                 curBiome = GetCurrentBiome(i, j);
-                height = Mathf.PerlinNoise((i + seed) * curBiome.terrainFreq, seed * curBiome.terrainFreq) * curBiome.heightMultiplier + heightAddition;
+                height = Mathf.PerlinNoise((i + seed) * terrainFreq, seed * terrainFreq) * curBiome.heightMultiplier + heightAddition;
                 if (j >= height)
                     break;
 
@@ -216,8 +176,18 @@ public class TerrainGeneration : MonoBehaviour
                     int t = Random.Range(0, curBiome.treeChance);
                     if (t == 1)
                     {
+                        //Generate tree
                         if (worldTiles.Contains(new Vector2(i, j)))
-                            GenerateTree(Random.Range(curBiome.minTreeHeight, curBiome.maxTreeHeight), i, j + 1);
+                        {
+                            if (curBiome.biomeName == "Desert")
+                            {
+                                GenerateCactus(curBiome.tileAtlas, Random.Range(curBiome.minTreeHeight, curBiome.maxTreeHeight), i, j + 1);
+                            }
+                            else
+                            {
+                                GenerateTree(Random.Range(curBiome.minTreeHeight, curBiome.maxTreeHeight), i, j + 1);
+                            }
+                        }
                     }
                     else
                     {
@@ -239,11 +209,17 @@ public class TerrainGeneration : MonoBehaviour
 
     public void GenerateNoiseTexture(float frequency, float limit, Texture2D noiseTexture)
     {
+        float v, b;
+        Color col;
         for (int x = 0; x < noiseTexture.width; x++)
         {
             for (int y = 0; y < noiseTexture.height; y++)
             {
-                float v = Mathf.PerlinNoise((x + seed) * frequency, (y + seed) * frequency);
+                v = Mathf.PerlinNoise((x + seed) * frequency, (y + seed) * frequency);
+                b = Mathf.PerlinNoise((x + seed) * biomeFrequency, (y + seed) * biomeFrequency);
+                col = biomeGradient.Evaluate(b);
+                biomeMap.SetPixel(x, y, col);
+
                 if (v > limit)
                     noiseTexture.SetPixel(x, y, Color.white);
                 else
@@ -251,6 +227,14 @@ public class TerrainGeneration : MonoBehaviour
             }
         }
         noiseTexture.Apply();
+        biomeMap.Apply();
+    }
+    void GenerateCactus(TileAtlas atlas, int treeHeight, int i, int j)
+    {
+        for (int t = 0; t < treeHeight; t++)
+        {
+            PlaceTile(atlas.log.tileSprites, i, j + t);
+        }
     }
     void GenerateTree(int treeHeight, int i, int j)
     {
@@ -274,9 +258,9 @@ public class TerrainGeneration : MonoBehaviour
         {
             GameObject newTile = new GameObject();
 
-            float chunkCoord = Mathf.RoundToInt(i / chunkSize) * chunkSize;
+            int chunkCoord = Mathf.RoundToInt(Mathf.Round(i / chunkSize) * chunkSize);
             chunkCoord /= chunkSize;
-            newTile.transform.parent = worldChunks[(int)chunkCoord].transform;
+            newTile.transform.parent = worldChunks[chunkCoord].transform;
 
             newTile.AddComponent<SpriteRenderer>();
 
