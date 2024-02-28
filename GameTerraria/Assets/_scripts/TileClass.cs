@@ -8,5 +8,5 @@ public class TileClass : ScriptableObject
     public string tileName;
     //public Sprite tileSprite;
     public Sprite[] tileSprites;
-    public bool isSolid = true;
+    public bool isImpact = true;
 }

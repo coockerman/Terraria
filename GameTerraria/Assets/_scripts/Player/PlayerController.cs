@@ -11,8 +11,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     float horizontal;
-    private void Start()
+
+    public Vector2 spawnPos { get; set; }
+    public void Spawn()
     {
+        GetComponent<Transform>().position = spawnPos;
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }

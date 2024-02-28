@@ -5,6 +5,9 @@ using static UnityEditor.PlayerSettings;
 
 public class TerrainGeneration : MonoBehaviour
 {
+    public PlayerController playerController;
+    public CameraController cameraController;
+
     [Header("Tile Sprites")]
     public TileAtlas tileAtlas;
     public float seed;
@@ -52,6 +55,10 @@ public class TerrainGeneration : MonoBehaviour
         DrawCavesAndOres();
         CreateChunks();
         GenerateTerrain();
+
+        
+        playerController.Spawn();
+        cameraController.Spawn(new Vector3(playerController.transform.position.x, playerController.transform.position.y, -10));
     }
     public void DrawCavesAndOres()
     {
@@ -134,6 +141,8 @@ public class TerrainGeneration : MonoBehaviour
             {
                 curBiome = GetCurrentBiome(i, j);
                 height = Mathf.PerlinNoise((i + seed) * terrainFreq, seed * terrainFreq) * curBiome.heightMultiplier + heightAddition;
+                if (i == worldSize / 2)
+                    playerController.spawnPos = new Vector2(i, height + 3);
                 if (j >= height)
                     break;
 
@@ -163,12 +172,12 @@ public class TerrainGeneration : MonoBehaviour
                 {
                     if (caveNoiseTexture.GetPixel(i, j).r > 0.5f)
                     {
-                        PlaceTile(tileSprite, i, j);
+                        PlaceTile(tileSprite, i, j, true);
                     }
                 }
                 else
                 {
-                    PlaceTile(tileSprite, i, j);
+                    PlaceTile(tileSprite, i, j, true);
                 }
 
                 if (j >= height - 1)
@@ -197,7 +206,7 @@ public class TerrainGeneration : MonoBehaviour
                             if (worldTiles.Contains(new Vector2(i, j)))
                             {
                                 if (curBiome.tileAtlas.tallGrass != null)
-                                    PlaceTile(curBiome.tileAtlas.tallGrass.tileSprites, i, j + 1);
+                                    PlaceTile(curBiome.tileAtlas.tallGrass.tileSprites, i, j + 1, false);
                             }
                         }
 
@@ -233,28 +242,28 @@ public class TerrainGeneration : MonoBehaviour
     {
         for (int t = 0; t < treeHeight; t++)
         {
-            PlaceTile(atlas.log.tileSprites, i, j + t);
+            PlaceTile(atlas.log.tileSprites, i, j + t, false);
         }
     }
     void GenerateTree(int treeHeight, int i, int j)
     {
         for (int t = 0; t < treeHeight; t++)
         {
-            PlaceTile(tileAtlas.log.tileSprites, i, j + t);
+            PlaceTile(tileAtlas.log.tileSprites, i, j + t, false);
         }
-        PlaceTile(tileAtlas.leaf.tileSprites, i, j + treeHeight);
-        PlaceTile(tileAtlas.leaf.tileSprites, i, j + treeHeight + 1);
-        PlaceTile(tileAtlas.leaf.tileSprites, i, j + treeHeight + 2);
+        PlaceTile(tileAtlas.leaf.tileSprites, i, j + treeHeight, false);
+        PlaceTile(tileAtlas.leaf.tileSprites, i, j + treeHeight + 1, false);
+        PlaceTile(tileAtlas.leaf.tileSprites, i, j + treeHeight + 2, false);
 
-        PlaceTile(tileAtlas.leaf.tileSprites, i - 1, j + treeHeight);
-        PlaceTile(tileAtlas.leaf.tileSprites, i - 1, j + treeHeight + 1);
+        PlaceTile(tileAtlas.leaf.tileSprites, i - 1, j + treeHeight, false);
+        PlaceTile(tileAtlas.leaf.tileSprites, i - 1, j + treeHeight + 1, false);
 
-        PlaceTile(tileAtlas.leaf.tileSprites, i + 1, j + treeHeight);
-        PlaceTile(tileAtlas.leaf.tileSprites, i + 1, j + treeHeight + 1);
+        PlaceTile(tileAtlas.leaf.tileSprites, i + 1, j + treeHeight, false);
+        PlaceTile(tileAtlas.leaf.tileSprites, i + 1, j + treeHeight + 1, false);
     }
-    public void PlaceTile(Sprite[] tileSprite, int i, int j)
+    public void PlaceTile(Sprite[] tileSprite, int i, int j, bool isImpact)
     {
-        if (!worldTiles.Contains(new Vector2Int(i, j)))
+        if (!worldTiles.Contains(new Vector2Int(i, j)) && i >= 0 && i <= worldSize && j >=0 && j <= worldSize)
         {
             GameObject newTile = new GameObject();
 
@@ -263,9 +272,13 @@ public class TerrainGeneration : MonoBehaviour
             newTile.transform.parent = worldChunks[chunkCoord].transform;
 
             newTile.AddComponent<SpriteRenderer>();
-            newTile.AddComponent<BoxCollider2D>();
-            newTile.GetComponent<BoxCollider2D>().size = Vector2.one;
-            newTile.tag = "Ground";
+            if(isImpact)
+            {
+                newTile.AddComponent<BoxCollider2D>();
+                newTile.GetComponent<BoxCollider2D>().size = Vector2.one;
+                newTile.tag = "Ground";
+            }
+            
             int spriteIndex = Random.Range(0, tileSprite.Length);
             newTile.GetComponent<SpriteRenderer>().sprite = tileSprite[spriteIndex];
 
