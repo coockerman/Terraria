@@ -9,11 +9,12 @@ public class PlayerController : MonoBehaviour
     public bool onGround;
 
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
+    private Animator anim;
+    float horizontal;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal");
+        horizontal = Input.GetAxis("Horizontal");
         float jump = Input.GetAxis("Jump");
         float vertical = Input.GetAxis("Vertical");
 
@@ -49,5 +50,9 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity = movement;
+    }
+    private void Update()
+    {
+        anim.SetFloat("horizontal", horizontal);
     }
 }

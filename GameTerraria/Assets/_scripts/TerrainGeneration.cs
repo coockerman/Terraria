@@ -263,7 +263,9 @@ public class TerrainGeneration : MonoBehaviour
             newTile.transform.parent = worldChunks[chunkCoord].transform;
 
             newTile.AddComponent<SpriteRenderer>();
-
+            newTile.AddComponent<BoxCollider2D>();
+            newTile.GetComponent<BoxCollider2D>().size = Vector2.one;
+            newTile.tag = "Ground";
             int spriteIndex = Random.Range(0, tileSprite.Length);
             newTile.GetComponent<SpriteRenderer>().sprite = tileSprite[spriteIndex];
 
