@@ -35,6 +35,8 @@ public class TerrainGeneration : MonoBehaviour
 
     private GameObject[] worldChunks;
     private List<Vector2> worldTiles = new List<Vector2>();
+    private List<GameObject> worldTileObjects = new List<GameObject>();
+
     private BiomeClass curBiome;
     private Color[] biomeCols;
 
@@ -142,7 +144,7 @@ public class TerrainGeneration : MonoBehaviour
                 curBiome = GetCurrentBiome(i, j);
                 height = Mathf.PerlinNoise((i + seed) * terrainFreq, seed * terrainFreq) * curBiome.heightMultiplier + heightAddition;
                 if (i == worldSize / 2)
-                    playerController.spawnPos = new Vector2(i, height + 3);
+                    playerController.spawnPos = new Vector2(i, height + 5);
                 if (j >= height)
                     break;
 
@@ -261,6 +263,13 @@ public class TerrainGeneration : MonoBehaviour
         PlaceTile(tileAtlas.leaf.tileSprites, i + 1, j + treeHeight, false);
         PlaceTile(tileAtlas.leaf.tileSprites, i + 1, j + treeHeight + 1, false);
     }
+    public void RemoveTile(int i, int j)
+    {
+        if (worldTiles.Contains(new Vector2Int(i, j)) && i >= 0 && i <= worldSize && j >= 0 && j <= worldSize)
+        {
+            Destroy(worldTileObjects[worldTiles.IndexOf(new Vector2(i, j))]);
+        }
+    }
     public void PlaceTile(Sprite[] tileSprite, int i, int j, bool isImpact)
     {
         if (!worldTiles.Contains(new Vector2Int(i, j)) && i >= 0 && i <= worldSize && j >=0 && j <= worldSize)
@@ -286,6 +295,7 @@ public class TerrainGeneration : MonoBehaviour
             newTile.transform.position = new Vector2(i + 0.5f, j + 0.5f);
 
             worldTiles.Add(newTile.transform.position - (Vector3.one * 0.5f));
+            worldTileObjects.Add(newTile);
         }
 
     }
