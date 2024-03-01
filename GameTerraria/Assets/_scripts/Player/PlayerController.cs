@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
             if (hit)
                 terrainGeneration.RemoveTile(mousePos.x, mousePos.y);
             else if (place && Vector2.Distance(transform.position, mousePosFloat) >= playerRangeMin)
-                terrainGeneration.CheckTile(selectTile, mousePos.x, mousePos.y, selectTile.isImpact);
+                terrainGeneration.CheckTile(selectTile, mousePos.x, mousePos.y);
         }
 
         if (horizontal > 0)

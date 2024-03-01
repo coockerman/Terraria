@@ -9,4 +9,5 @@ public class TileClass : ScriptableObject
     //public Sprite tileSprite;
     public Sprite[] tileSprites;
     public bool isImpact = true;
+    public bool isDrop = true;
 }

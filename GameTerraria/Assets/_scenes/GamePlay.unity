@@ -722,6 +722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 1217824154}
   cameraController: {fileID: 963194229}
+  tileDrop: {fileID: 3728381028941206705, guid: e8ac0b405f7f80b4eba4f49e3fa06fe7, type: 3}
   tileAtlas: {fileID: 11400000, guid: f372537b704692f4c9430bf5ee13ec5f, type: 2}
   seed: 0
   biomes:
