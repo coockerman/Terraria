@@ -328,7 +328,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -570,6 +570,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9029241959601488526, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
+      propertyPath: terrainGeneration
+      value: 
+      objectReference: {fileID: 1680373307}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -829,6 +833,7 @@ MonoBehaviour:
   worldSize: 100
   heightAddition: 50
   generateCaves: 1
+  cameraSize: 4
   caveNoiseTexture: {fileID: 250698511}
   terrainFreq: 0.02
   caveFreq: 0.08

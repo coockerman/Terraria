@@ -24,6 +24,7 @@ public class TerrainGeneration : MonoBehaviour
     public int worldSize = 100;
     public int heightAddition = 25;
     public bool generateCaves = true;
+    public float cameraSize;
 
     [Header("Noise Settings")]
     public Texture2D caveNoiseTexture;
@@ -61,6 +62,21 @@ public class TerrainGeneration : MonoBehaviour
         
         playerController.Spawn();
         cameraController.Spawn(new Vector3(playerController.transform.position.x, playerController.transform.position.y, -10));
+        RefreshChunks();
+    }
+    private void Update()
+    {
+        RefreshChunks();
+    }
+    void RefreshChunks()
+    {
+        for(int i = 0; i < worldChunks.Length; i++)
+        {
+            if (Vector2.Distance(new Vector2((i) * chunkSize, 0), new Vector2(playerController.transform.position.x - (chunkSize/2), 0)) > (Camera.main.orthographicSize * cameraSize))
+                worldChunks[i].SetActive(false);
+            else
+                worldChunks[i].SetActive(true);
+        }
     }
     public void DrawCavesAndOres()
     {
