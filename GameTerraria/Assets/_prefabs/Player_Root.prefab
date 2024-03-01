@@ -623,9 +623,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0265d56af2dd9a74da261d93abffd753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectTile: {fileID: 11400000, guid: f593cd13b93556b41b11c23d25f7b709, type: 2}
+  terrainGeneration: {fileID: 0}
+  playerRangeMax: 5
+  playerRangeMin: 0.7
+  mousePos: {x: 0, y: 0}
+  mousePosFloat: {x: 0, y: 0}
   moveSpeed: 5
   jumpForce: 7
   onGround: 0
+  hit: 0
+  place: 0
 --- !u!95 &3596225886903399323
 Animator:
   serializedVersion: 5

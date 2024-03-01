@@ -15,3 +15,4 @@ MonoBehaviour:
   tileName: tile Cactus
   tileSprites:
   - {fileID: 21300000, guid: 65ef7f8a102e58d4c8a5c0879b858c3a, type: 3}
+  isImpact: 0

@@ -15,3 +15,4 @@ MonoBehaviour:
   tileName: tile Leaf
   tileSprites:
   - {fileID: 21300000, guid: 754ba9fffdf3cb349adb5c26f0d750db, type: 3}
+  isImpact: 0

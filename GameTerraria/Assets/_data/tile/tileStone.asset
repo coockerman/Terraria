@@ -15,3 +15,5 @@ MonoBehaviour:
   tileName: tile Stone
   tileSprites:
   - {fileID: 21300000, guid: 130a81ed2afa3394eb0a7825bb48abfd, type: 3}
+  - {fileID: 21300000, guid: 1090ce9ca1041d049952d285df5b2285, type: 3}
+  isImpact: 1
