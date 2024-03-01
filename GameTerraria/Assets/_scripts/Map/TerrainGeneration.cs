@@ -194,6 +194,10 @@ public class TerrainGeneration : MonoBehaviour
                     {
                         PlaceTile(tileClass, i, j);
                     }
+                    else if (tileClass.wallVariant != null)
+                    {
+                        PlaceTile(tileClass.wallVariant, i, j);
+                    }
                 }
                 else
                 {
@@ -287,11 +291,16 @@ public class TerrainGeneration : MonoBehaviour
         {
             int tileIndex = worldTiles.IndexOf(new Vector2(i, j));
             Destroy(worldTileObjects[tileIndex]);
+
             //Drop tile
             if (worldTileClass[tileIndex].isDrop)
             {
                 GameObject newTileDrop = Instantiate(tileDrop, new Vector2(i, j + 0.5f), Quaternion.identity);
                 newTileDrop.GetComponent<SpriteRenderer>().sprite = worldTileClass[tileIndex].tileSprites[0];
+            }
+            if (worldTileClass[tileIndex].wallVariant != null)
+            {
+                PlaceTile(worldTileClass[tileIndex].wallVariant, i, j);
             }
             worldTileObjects.RemoveAt(tileIndex);
             worldTileClass.RemoveAt(tileIndex);
@@ -340,6 +349,9 @@ public class TerrainGeneration : MonoBehaviour
                 newTile.GetComponent<SpriteRenderer>().sortingOrder = -5;
             else
                 newTile.GetComponent<SpriteRenderer>().sortingOrder = -10;
+
+            if (tile.name.ToUpper().Contains("WALL"))
+                newTile.GetComponent<SpriteRenderer>().color = new Color(0.6f, 0.6f, 0.6f);
 
             newTile.name = tile.tileSprites[0].name;
             newTile.transform.position = new Vector2(i + 0.5f, j + 0.5f);
