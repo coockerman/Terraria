@@ -192,16 +192,16 @@ public class TerrainGeneration : MonoBehaviour
                 {
                     if (caveNoiseTexture.GetPixel(i, j).r > 0.5f)
                     {
-                        PlaceTile(tileClass, i, j);
+                        PlaceTile(tileClass, i, j, true);
                     }
                     else if (tileClass.wallVariant != null)
                     {
-                        PlaceTile(tileClass.wallVariant, i, j);
+                        PlaceTile(tileClass.wallVariant, i, j, true);
                     }
                 }
                 else
                 {
-                    PlaceTile(tileClass, i, j);
+                    PlaceTile(tileClass, i, j, true);
                 }
 
                 if (j >= height - 1)
@@ -230,7 +230,7 @@ public class TerrainGeneration : MonoBehaviour
                             if (worldTiles.Contains(new Vector2(i, j)))
                             {
                                 if (curBiome.tileAtlas.tallGrass != null)
-                                    PlaceTile(curBiome.tileAtlas.tallGrass, i, j + 1);
+                                    PlaceTile(curBiome.tileAtlas.tallGrass, i, j + 1, true);
                             }
                         }
 
@@ -266,24 +266,24 @@ public class TerrainGeneration : MonoBehaviour
     {
         for (int t = 0; t < treeHeight; t++)
         {
-            PlaceTile(atlas.log, i, j + t);
+            PlaceTile(atlas.log, i, j + t, true);
         }
     }
     void GenerateTree(int treeHeight, int i, int j)
     {
         for (int t = 0; t < treeHeight; t++)
         {
-            PlaceTile(tileAtlas.log, i, j + t);
+            PlaceTile(tileAtlas.log, i, j + t, true);
         }
-        PlaceTile(tileAtlas.leaf, i, j + treeHeight);
-        PlaceTile(tileAtlas.leaf, i, j + treeHeight + 1);
-        PlaceTile(tileAtlas.leaf, i, j + treeHeight + 2);
+        PlaceTile(tileAtlas.leaf, i, j + treeHeight, true);
+        PlaceTile(tileAtlas.leaf, i, j + treeHeight + 1, true);
+        PlaceTile(tileAtlas.leaf, i, j + treeHeight + 2, true);
 
-        PlaceTile(tileAtlas.leaf, i - 1, j + treeHeight);
-        PlaceTile(tileAtlas.leaf, i - 1, j + treeHeight + 1);
+        PlaceTile(tileAtlas.leaf, i - 1, j + treeHeight, true);
+        PlaceTile(tileAtlas.leaf, i - 1, j + treeHeight + 1, true);
 
-        PlaceTile(tileAtlas.leaf, i + 1, j + treeHeight);
-        PlaceTile(tileAtlas.leaf, i + 1, j + treeHeight + 1);
+        PlaceTile(tileAtlas.leaf, i + 1, j + treeHeight, true);
+        PlaceTile(tileAtlas.leaf, i + 1, j + treeHeight + 1, true);
     }
     public void RemoveTile(int i, int j)
     {
@@ -295,12 +295,14 @@ public class TerrainGeneration : MonoBehaviour
             //Drop tile
             if (worldTileClass[tileIndex].isDrop)
             {
+
                 GameObject newTileDrop = Instantiate(tileDrop, new Vector2(i, j + 0.5f), Quaternion.identity);
                 newTileDrop.GetComponent<SpriteRenderer>().sprite = worldTileClass[tileIndex].tileSprites[0];
             }
             if (worldTileClass[tileIndex].wallVariant != null)
             {
-                PlaceTile(worldTileClass[tileIndex].wallVariant, i, j);
+                if (worldTileClass[tileIndex].isNaturallyPlace)
+                    PlaceTile(worldTileClass[tileIndex].wallVariant, i, j, true);
             }
             worldTileObjects.RemoveAt(tileIndex);
             worldTileClass.RemoveAt(tileIndex);
@@ -308,23 +310,23 @@ public class TerrainGeneration : MonoBehaviour
 
         }
     }
-    public void CheckTile(TileClass tile, int i, int j)
+    public void CheckTile(TileClass tile, int i, int j, bool isNaturallyPlace)
     {
         if (i >= 0 && i < worldSize && j >= 0 && j < worldSize)
         {
             if (!worldTiles.Contains(new Vector2Int(i, j)))
             {
-                PlaceTile(tile, i, j);
+                PlaceTile(tile, i, j, isNaturallyPlace);
             }
             else if (!worldTileClass[worldTiles.IndexOf(new Vector2Int(i, j))].isImpact)
             {
                 RemoveTile(i, j);
-                PlaceTile(tile, i, j);
+                PlaceTile(tile, i, j, isNaturallyPlace);
             }
         }
 
     }
-    void PlaceTile(TileClass tile, int i, int j)
+    void PlaceTile(TileClass tile, int i, int j, bool isNaturallyPlace)
     {
         if (i >= 0 && i < worldSize && j >= 0 && j < worldSize)
         {
@@ -355,6 +357,8 @@ public class TerrainGeneration : MonoBehaviour
 
             newTile.name = tile.tileSprites[0].name;
             newTile.transform.position = new Vector2(i + 0.5f, j + 0.5f);
+
+            tile.isNaturallyPlace = isNaturallyPlace;
 
             worldTiles.Add(newTile.transform.position - (Vector3.one * 0.5f));
             worldTileObjects.Add(newTile);

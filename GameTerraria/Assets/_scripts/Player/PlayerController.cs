@@ -56,13 +56,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 movement = new Vector2(horizontal * moveSpeed, rb.velocity.y);
 
-        if ( Vector2.Distance(transform.position, mousePosFloat) <= playerRangeMax )
-        {
-            if (hit)
-                terrainGeneration.RemoveTile(mousePos.x, mousePos.y);
-            else if (place && Vector2.Distance(transform.position, mousePosFloat) >= playerRangeMin)
-                terrainGeneration.CheckTile(selectTile, mousePos.x, mousePos.y);
-        }
+        
 
         if (horizontal > 0)
             transform.localScale = new Vector3(-1, 1, 1);
@@ -81,6 +75,14 @@ public class PlayerController : MonoBehaviour
     {
         hit = Input.GetMouseButtonDown(0);
         place = Input.GetMouseButton(1);
+
+        if (Vector2.Distance(transform.position, mousePosFloat) <= playerRangeMax)
+        {
+            if (hit)
+                terrainGeneration.RemoveTile(mousePos.x, mousePos.y);
+            else if (place && Vector2.Distance(transform.position, mousePosFloat) >= playerRangeMin)
+                terrainGeneration.CheckTile(selectTile, mousePos.x, mousePos.y, true);
+        }
 
         mousePosFloat.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         mousePosFloat.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
