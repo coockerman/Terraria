@@ -324,7 +324,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -655,10 +655,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9029241959601488526, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
-      propertyPath: playerRangeMin
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9029241959601488526, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
       propertyPath: terrainGeneration
       value: 
       objectReference: {fileID: 1680373307}
@@ -808,6 +804,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee144e5861763dc4688aa6ea5e86ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldTilesMap: {fileID: 0}
+  lightShader: {fileID: 2100000, guid: e18fe920a28feec43a326502654e25f7, type: 2}
+  lightThreshold: 0
+  lightRadius: 0
   playerController: {fileID: 1217824154}
   cameraController: {fileID: 963194229}
   tileDrop: {fileID: 3728381028941206705, guid: e8ac0b405f7f80b4eba4f49e3fa06fe7, type: 3}

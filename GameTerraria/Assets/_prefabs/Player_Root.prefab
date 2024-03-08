@@ -529,7 +529,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 2.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -626,7 +626,7 @@ MonoBehaviour:
   selectTile: {fileID: 11400000, guid: f593cd13b93556b41b11c23d25f7b709, type: 2}
   terrainGeneration: {fileID: 0}
   playerRangeMax: 5
-  playerRangeMin: 0.7
+  playerRangeMin: 1
   mousePos: {x: 0, y: 0}
   mousePosFloat: {x: 0, y: 0}
   moveSpeed: 5
