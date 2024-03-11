@@ -5,12 +5,14 @@ using static UnityEditor.PlayerSettings;
 
 public class TerrainGeneration : MonoBehaviour
 {
+    [Header("Light")]
     public Texture2D worldTilesMap;
     public Material lightShader;
     public float lightThreshold;
     public float lightRadius;
     List<Vector2Int> unlistBlocks = new List<Vector2Int>();
 
+    [Header("Connect")]
     public PlayerController playerController;
     public CameraController cameraController;
     public GameObject tileDrop;
@@ -53,7 +55,6 @@ public class TerrainGeneration : MonoBehaviour
     {
         //light
         worldTilesMap = new Texture2D(worldSize, worldSize);
-        //worldTilesMap.filterMode = FilterMode.Point;
         lightShader.SetTexture("_ShadowTex", worldTilesMap);
 
         for (int x = 0; x < worldSize; x++)
@@ -78,7 +79,6 @@ public class TerrainGeneration : MonoBehaviour
             biomeCols[i] = biomes[i].biomeCol;
         }
 
-        //DrawTextures
         DrawTexture();
         DrawCavesAndOres();
         CreateChunks();
@@ -101,7 +101,7 @@ public class TerrainGeneration : MonoBehaviour
     {
         RefreshChunks();
     }
-    void RefreshChunks()
+    void RefreshChunks()//tat mo chunk tung khu vuc
     {
         for (int i = 0; i < worldChunks.Length; i++)
         {
@@ -111,7 +111,42 @@ public class TerrainGeneration : MonoBehaviour
                 worldChunks[i].SetActive(true);
         }
     }
-    public void DrawCavesAndOres()
+    private void DrawTexture()//Tach biomeMap, khoi tao moi truong
+    {
+        biomeMap = new Texture2D(worldSize, worldSize);
+        for (int i = 0; i < biomes.Length; i++)
+        {
+            biomes[i].caveNoiseTexture = new Texture2D(worldSize, worldSize);
+            for (int j = 0; j < biomes[i].ores.Length; j++)
+            {
+                biomes[i].ores[j].spreadTexture = new Texture2D(worldSize, worldSize);
+                GenerateNoiseTexture(biomes[i].ores[j]);
+            }
+        }
+    }
+    public void GenerateNoiseTexture(OreClass ore)//Khoi tao tai nguyen
+    {
+        float v, b;
+        Color col;
+        for (int x = 0; x < ore.spreadTexture.width; x++)
+        {
+            for (int y = 0; y < ore.spreadTexture.height; y++)
+            {
+                v = Mathf.PerlinNoise((x + seed) * ore.frequency, (y + seed) * ore.frequency);
+                b = Mathf.PerlinNoise((x + seed) * biomeFrequency, (y + seed) * biomeFrequency);
+                col = biomeGradient.Evaluate(b);
+                biomeMap.SetPixel(x, y, col);
+
+                if (v > ore.size)
+                    ore.spreadTexture.SetPixel(x, y, Color.white);
+                else
+                    ore.spreadTexture.SetPixel(x, y, Color.clear);
+            }
+        }
+        ore.spreadTexture.Apply();
+        biomeMap.Apply();
+    }
+    public void DrawCavesAndOres()//Ve hang dong
     {
         caveNoiseTexture = new Texture2D(worldSize, worldSize);
         float v;
@@ -144,23 +179,15 @@ public class TerrainGeneration : MonoBehaviour
         }
         caveNoiseTexture.Apply();
     }
-    private void DrawTexture()
+    public BiomeClass GetCurrentBiome(int x, int y) //Tra lai thong so moi truong theo toa do diem
     {
-        biomeMap = new Texture2D(worldSize, worldSize);
-
-        for (int i = 0; i < biomes.Length; i++)
+        if (System.Array.IndexOf(biomeCols, biomeMap.GetPixel(x, y)) >= 0)
         {
-            biomes[i].caveNoiseTexture = new Texture2D(worldSize, worldSize);
-            for (int j = 0; j < biomes[i].ores.Length; j++)
-            {
-                biomes[i].ores[j].spreadTexture = new Texture2D(worldSize, worldSize);
-                GenerateNoiseTexture(biomes[i].ores[j].frequency, biomes[i].ores[j].size, biomes[i].ores[j].spreadTexture);
-
-            }
+            return biomes[System.Array.IndexOf(biomeCols, biomeMap.GetPixel(x, y))];
         }
+        return curBiome;
     }
-
-    public void CreateChunks()
+    public void CreateChunks()//Tao chunks
     {
         int numChunks = worldSize / chunkSize;
         worldChunks = new GameObject[numChunks];
@@ -173,14 +200,7 @@ public class TerrainGeneration : MonoBehaviour
             worldChunks[i] = newChunk;
         }
     }
-    public BiomeClass GetCurrentBiome(int x, int y)
-    {
-        if (System.Array.IndexOf(biomeCols, biomeMap.GetPixel(x, y)) >= 0)
-        {
-            return biomes[System.Array.IndexOf(biomeCols, biomeMap.GetPixel(x, y))];
-        }
-        return curBiome;
-    }
+    
     public void GenerateTerrain()
     {
         TileClass tileClass;
@@ -272,36 +292,15 @@ public class TerrainGeneration : MonoBehaviour
         worldTilesMap.Apply();
     }
 
-    public void GenerateNoiseTexture(float frequency, float limit, Texture2D noiseTexture)
-    {
-        float v, b;
-        Color col;
-        for (int x = 0; x < noiseTexture.width; x++)
-        {
-            for (int y = 0; y < noiseTexture.height; y++)
-            {
-                v = Mathf.PerlinNoise((x + seed) * frequency, (y + seed) * frequency);
-                b = Mathf.PerlinNoise((x + seed) * biomeFrequency, (y + seed) * biomeFrequency);
-                col = biomeGradient.Evaluate(b);
-                biomeMap.SetPixel(x, y, col);
-
-                if (v > limit)
-                    noiseTexture.SetPixel(x, y, Color.white);
-                else
-                    noiseTexture.SetPixel(x, y, Color.clear);
-            }
-        }
-        noiseTexture.Apply();
-        biomeMap.Apply();
-    }
-    void GenerateCactus(TileAtlas atlas, int treeHeight, int i, int j)
+    
+    void GenerateCactus(TileAtlas atlas, int treeHeight, int i, int j)//Tao xuong rong
     {
         for (int t = 0; t < treeHeight; t++)
         {
             PlaceTile(atlas.log, i, j + t, true);
         }
     }
-    void GenerateTree(int treeHeight, int i, int j)
+    void GenerateTree(int treeHeight, int i, int j)//Tao cay
     {
         for (int t = 0; t < treeHeight; t++)
         {
@@ -322,6 +321,7 @@ public class TerrainGeneration : MonoBehaviour
         if (worldTiles.Contains(new Vector2Int(i, j)) && i >= 0 && i <= worldSize && j >= 0 && j <= worldSize)
         {
             int tileIndex = worldTiles.IndexOf(new Vector2(i, j));
+            //if (!worldTileClass[tileIndex].isNaturallyPlace) return;
             Destroy(worldTileObjects[tileIndex]);
             worldTilesMap.SetPixel(i, j, Color.white);
             LightBlock(i, j, 1f, 0);
@@ -364,13 +364,13 @@ public class TerrainGeneration : MonoBehaviour
     }
     void PlaceTile(TileClass tile, int i, int j, bool isNaturallyPlace)
     {
-        if (i >= 0 && i < worldSize && j >= 0 && j < worldSize)
+        if (i >= 0 && i < worldSize && j >= 0 && j < worldSize)//Kiem tra toa do diem
         {
             GameObject newTile = new GameObject();
 
             int chunkCoord = Mathf.RoundToInt(Mathf.Round(i / chunkSize) * chunkSize);
             chunkCoord /= chunkSize;
-            newTile.transform.parent = worldChunks[chunkCoord].transform;
+            newTile.transform.parent = worldChunks[chunkCoord].transform;//Add vao chunks phu hop
 
             newTile.AddComponent<SpriteRenderer>();
             if (tile.isImpact)
@@ -401,11 +401,10 @@ public class TerrainGeneration : MonoBehaviour
             newTile.name = tile.tileSprites[0].name;
             newTile.transform.position = new Vector2(i + 0.5f, j + 0.5f);
 
-            tile.isNaturallyPlace = isNaturallyPlace;
-
+            TileClass newTileClass = new TileClass(tile, isNaturallyPlace);
             worldTiles.Add(newTile.transform.position - (Vector3.one * 0.5f));
             worldTileObjects.Add(newTile);
-            worldTileClass.Add(tile);
+            worldTileClass.Add(newTileClass);
         }
 
     }

@@ -11,4 +11,14 @@ public class TileClass : ScriptableObject
     public bool isImpact = true;
     public bool isDrop = true;
     public bool isNaturallyPlace = false;
+
+    public TileClass (TileClass tileClass, bool isNaturallyPlace)
+    {
+        this.tileName = tileClass.tileName;
+        this.wallVariant = tileClass.wallVariant;
+        this.tileSprites = tileClass.tileSprites;
+        this.isImpact = tileClass.isImpact;
+        this.isDrop = tileClass.isDrop;
+        this.isNaturallyPlace= isNaturallyPlace;
+    }
 }
