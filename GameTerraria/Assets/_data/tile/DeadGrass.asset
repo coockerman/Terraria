@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: DeadGrass
   m_EditorClassIdentifier: 
   tileName: DeadGrass
+  wallVariant: {fileID: 0}
   tileSprites:
   - {fileID: 21300000, guid: 2163165d014ae054aa8273671a8097a7, type: 3}
   - {fileID: 21300000, guid: 6d20a9b56b50e1a489e1011b380d3402, type: 3}
   isImpact: 0
-  isDrop: 0
+  tileDrop: {fileID: 0}
+  isNaturallyPlace: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TallGrass
   m_EditorClassIdentifier: 
   tileName: TallGrass
+  wallVariant: {fileID: 0}
   tileSprites:
   - {fileID: 21300000, guid: bd27597410cc19f439183aa922cb564a, type: 3}
   - {fileID: 21300000, guid: e5b9bfcb30f69574eab330b9d3a5ae1e, type: 3}
@@ -20,4 +21,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d91dc1f27ee9d22448f4587b6e6d80f9, type: 3}
   - {fileID: 21300000, guid: 41134e7d4cc10ec458536978b6cf066a, type: 3}
   isImpact: 0
-  isDrop: 0
+  tileDrop: {fileID: 0}
+  isNaturallyPlace: 1

@@ -25,12 +25,14 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public Vector2 spawnPos { get; set; }
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
     public void Spawn()
     {
         GetComponent<Transform>().position = spawnPos;
-
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -74,7 +76,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         hit = Input.GetMouseButtonDown(0);
-        place = Input.GetMouseButton(1);
+        place = Input.GetMouseButtonDown(1);
 
         if (Vector2.Distance(transform.position, mousePosFloat) <= playerRangeMax)
         {

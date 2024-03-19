@@ -9,16 +9,23 @@ public class TileClass : ScriptableObject
     public TileClass wallVariant;
     public Sprite[] tileSprites;
     public bool isImpact = true;
-    public bool isDrop = true;
+    public Sprite tileDrop;
     public bool isNaturallyPlace = false;
 
-    public TileClass (TileClass tileClass, bool isNaturallyPlace)
+    public static TileClass CreateInstance(TileClass tileClass, bool isNaturallyPlace)
+    {
+        var thisTile = ScriptableObject.CreateInstance<TileClass>();
+        thisTile.Init(tileClass, isNaturallyPlace);
+        return thisTile;
+    }
+
+    public void Init (TileClass tileClass, bool isNaturallyPlace)
     {
         this.tileName = tileClass.tileName;
         this.wallVariant = tileClass.wallVariant;
         this.tileSprites = tileClass.tileSprites;
         this.isImpact = tileClass.isImpact;
-        this.isDrop = tileClass.isDrop;
+        this.tileDrop = tileClass.tileDrop;
         this.isNaturallyPlace= isNaturallyPlace;
     }
 }
