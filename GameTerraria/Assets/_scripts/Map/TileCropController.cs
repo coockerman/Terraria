@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class TileCropController : MonoBehaviour
 {
+    public ItemClass item;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            Destroy(this.gameObject);
+            if (collision.GetComponent<Inventory>().AddItem(item))
+                Destroy(this.gameObject);
         }
     }
 }
