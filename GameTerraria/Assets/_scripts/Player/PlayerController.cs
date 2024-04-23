@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public int selectSlotIndex = 0;
     public GameObject hotBarSelector;
+    public GameObject handHolder;
 
     public Inventory inventory;
     public bool isInventoryShow = false;
@@ -86,7 +87,10 @@ public class PlayerController : MonoBehaviour
                 selectSlotIndex -= 1;
 
             if (inventory.inventorySlots[selectSlotIndex, 0] != null)
+            {
                 selectedItem = inventory.inventorySlots[selectSlotIndex, 0].item;
+
+            }
             else
                 selectedItem = null;
 
@@ -94,6 +98,22 @@ public class PlayerController : MonoBehaviour
 
         hotBarSelector.transform.position = inventory.hotbarUISlot[selectSlotIndex].transform.position;
         //set selected item
+        if (selectedItem != null)
+        {
+            handHolder.GetComponent<SpriteRenderer>().sprite = selectedItem.sprite;
+            if (selectedItem.itemType == ItemClass.ItemType.block)
+            {
+                handHolder.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
+            else
+            {
+                handHolder.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+        }
+        else
+        {
+            handHolder.GetComponent<SpriteRenderer>().sprite = null;
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -103,11 +123,22 @@ public class PlayerController : MonoBehaviour
         if (Vector2.Distance(transform.position, mousePosFloat) <= playerRangeMax)
         {
             if (hit)
-                terrainGeneration.RemoveTile(mousePos.x, mousePos.y);
+                //terrainGeneration.RemoveTile(mousePos.x, mousePos.y);
+                terrainGeneration.BreakTile(mousePos.x, mousePos.y, selectedItem);
             else if (place && Vector2.Distance(transform.position, mousePosFloat) >= playerRangeMin)
+            {
                 if (selectedItem != null)
+                {
                     if (selectedItem.itemType == ItemClass.ItemType.block)
-                        terrainGeneration.CheckTile(selectedItem.tile, mousePos.x, mousePos.y, true);
+                    {
+                        if (terrainGeneration.CheckTile(selectedItem.tile, mousePos.x, mousePos.y, true))
+                            inventory.RemoveItem(selectedItem);
+                    }
+                }
+
+            }
+
+
         }
 
         mousePosFloat.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;

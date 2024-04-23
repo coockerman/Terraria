@@ -12,6 +12,7 @@ public class ItemClass
     }
     public enum ToolType
     {
+        none,
         axe,
         pickage,
         hammer
@@ -31,7 +32,7 @@ public class ItemClass
     public ItemClass(TileClass _tile)
     {
         nameTool = _tile.tileName;
-        sprite = _tile.tileSprites[0];
+        sprite = _tile.tileDrop.tileSprites[0];
         isStackable = _tile.isImpact;
         itemType = ItemType.block;
         tile = _tile;

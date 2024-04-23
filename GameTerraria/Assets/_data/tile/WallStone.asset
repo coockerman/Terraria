@@ -19,4 +19,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1090ce9ca1041d049952d285df5b2285, type: 3}
   isImpact: 0
   tileDrop: {fileID: 0}
+  toolToBreak: 1
   isNaturallyPlace: 1

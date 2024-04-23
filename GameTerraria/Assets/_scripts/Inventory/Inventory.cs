@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public ToolClass tool;
+    public ToolClass start_Axe;
+    public ToolClass start_Hammer;
+    public ToolClass start_Pickage;
+
     public GameObject inventoryUI;
     public GameObject hotbarUI;
 
@@ -30,7 +33,9 @@ public class Inventory : MonoBehaviour
 
         SetupUI();
         UpdateInventoryUI();
-        AddItem(new ItemClass(tool));
+        AddItem(new ItemClass(start_Axe));
+        AddItem(new ItemClass(start_Hammer));
+        AddItem(new ItemClass(start_Pickage));
     }
     void SetupUI()
     {
@@ -138,7 +143,7 @@ public class Inventory : MonoBehaviour
                 {
                     if (inventorySlots[x, y].item.nameTool == item.nameTool)
                     {
-                        if (item.isStackable)
+                        if (item.isStackable && inventorySlots[x, y].quantity < inventorySlots[x, y].stackLimit)
                             return inventorySlots[x, y].position;
                     }
                 }
@@ -146,8 +151,30 @@ public class Inventory : MonoBehaviour
         }
         return Vector2Int.one * -1;
     }
-    public void RemoveItem(ItemClass item)
+    
+    public bool RemoveItem(ItemClass item)
     {
+        for (int y = 0; y < inventoryHeight; y++)
+        {
+            for (int x = 0; x < inventoryWidth; x++)
+            {
+                if(inventorySlots[x, y]!=null)
+                {
+                    if (inventorySlots[x, y].item.nameTool == item.nameTool)
+                    {
+                        inventorySlots[x, y].quantity -= 1;
 
+                        if (inventorySlots[x, y].quantity == 0)
+                        {
+                            inventorySlots[x, y] = null;
+                        }
+
+                        UpdateInventoryUI();
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

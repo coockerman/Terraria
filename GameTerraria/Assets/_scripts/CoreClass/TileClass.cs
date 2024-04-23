@@ -9,7 +9,8 @@ public class TileClass : ScriptableObject
     public TileClass wallVariant;
     public Sprite[] tileSprites;
     public bool isImpact = true;
-    public Sprite tileDrop;
+    public TileClass tileDrop;
+    public ItemClass.ToolType toolToBreak;
     public bool isNaturallyPlace = false;
 
     public static TileClass CreateInstance(TileClass tileClass, bool isNaturallyPlace)
@@ -26,6 +27,7 @@ public class TileClass : ScriptableObject
         this.tileSprites = tileClass.tileSprites;
         this.isImpact = tileClass.isImpact;
         this.tileDrop = tileClass.tileDrop;
+        this.toolToBreak = tileClass.toolToBreak;
         this.isNaturallyPlace= isNaturallyPlace;
     }
 }
