@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameTool: Stone_Hammer
   sprite: {fileID: 21300000, guid: 281d09649577de043b8341e94857a682, type: 3}
-  toolType: 2
+  toolType: 3

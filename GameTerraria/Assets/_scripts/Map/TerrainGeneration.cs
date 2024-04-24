@@ -7,11 +7,6 @@ public class TerrainGeneration : MonoBehaviour
 {
     //[Header("Light")]
     public Texture2D worldTilesMap;
-    //public Material lightShader;
-    //public float groundlightThreshold = 0.7f;
-    //public float airLightThreshold = 0.8f;
-    //public float lightRadius = 7f;
-    //List<Vector2Int> unlistBlocks = new List<Vector2Int>();
 
     [Header("Connect")]
     public PlayerController playerController;
@@ -324,14 +319,14 @@ public class TerrainGeneration : MonoBehaviour
         {
             TileClass tile = GetTileFromWorld(i, j);
 
-            if(tile.toolToBreak == ItemClass.ToolType.none)
+            if(tile.toolToBreak == ItemEnum.ToolType.none)
             {
                 RemoveTile(i, j);
                 return true;
             }
             else
             {
-                if (item.itemType == ItemClass.ItemType.tool)
+                if (item.itemType == ItemEnum.ItemType.tool)
                 {
                     if (tile.toolToBreak == item.toolType)
                     {

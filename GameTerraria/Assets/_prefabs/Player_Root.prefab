@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1068367291323529302}
   - component: {fileID: 3207494327321410232}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: male_arm (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7064682120322972534}
   - component: {fileID: 7347193817373598073}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: male_head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 9144714684413622593}
   - component: {fileID: 5368439137990370350}
   - component: {fileID: 5802325285838038266}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2141391105603723579}
   - component: {fileID: 6976997537323856464}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: male_leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5860523389934341809}
   - component: {fileID: 4162194023132990340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: male_leg (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4842204227181585911}
   - component: {fileID: 3928717323974347378}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: male_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 9029241959601488526}
   - component: {fileID: 3686957659485943930}
   - component: {fileID: 3596225886903399323}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player_Root
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -670,6 +670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0265d56af2dd9a74da261d93abffd753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   selectSlotIndex: 0
   hotBarSelector: {fileID: 0}
   handHolder: {fileID: 7291034502477173828}
@@ -745,7 +748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7107955045802617712}
   - component: {fileID: 8220431431412337191}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: handHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     public ToolClass start_Axe;
     public ToolClass start_Hammer;
     public ToolClass start_Pickage;
+    public WeaponClass start_Sword;
 
     public GameObject inventoryUI;
     public GameObject hotbarUI;
@@ -36,6 +37,7 @@ public class Inventory : MonoBehaviour
         AddItem(new ItemClass(start_Axe));
         AddItem(new ItemClass(start_Hammer));
         AddItem(new ItemClass(start_Pickage));
+        AddItem(new ItemClass(start_Sword));
     }
     void SetupUI()
     {
@@ -143,7 +145,7 @@ public class Inventory : MonoBehaviour
                 {
                     if (inventorySlots[x, y].item.nameTool == item.nameTool)
                     {
-                        if (item.isStackable && inventorySlots[x, y].quantity < inventorySlots[x, y].stackLimit)
+                        if (item.isImpact && inventorySlots[x, y].quantity < inventorySlots[x, y].stackLimit)
                             return inventorySlots[x, y].position;
                     }
                 }

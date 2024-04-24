@@ -10,7 +10,7 @@ public class TileClass : ScriptableObject
     public Sprite[] tileSprites;
     public bool isImpact = true;
     public TileClass tileDrop;
-    public ItemClass.ToolType toolToBreak;
+    public ItemEnum.ToolType toolToBreak;
     public bool isNaturallyPlace = false;
 
     public static TileClass CreateInstance(TileClass tileClass, bool isNaturallyPlace)

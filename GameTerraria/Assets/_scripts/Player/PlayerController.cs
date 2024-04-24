@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public LayerMask layerMask;
+
     public int selectSlotIndex = 0;
     public GameObject hotBarSelector;
     public GameObject handHolder;
 
     public Inventory inventory;
+    public EnemyController enemyController;
     public bool isInventoryShow = false;
 
     public ItemClass selectedItem;
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     float horizontal;
+    float vertical;
 
     [HideInInspector]
     public Vector2 spawnPos { get; set; }
@@ -45,8 +49,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+
         float jump = Input.GetAxis("Jump");
-        float vertical = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(horizontal * moveSpeed, rb.velocity.y);
 
@@ -61,13 +66,32 @@ public class PlayerController : MonoBehaviour
                 movement.y = jumpForce;
         }
 
+        if (FootRayCast() && !HeadRayCast() && movement.x != 0)
+        {
+            if (onGround)
+                movement.y = jumpForce;
+        }
+
         rb.velocity = movement;
     }
+
+
+
     private void Update()
     {
         hit = Input.GetMouseButtonDown(0);
         place = Input.GetMouseButtonDown(1);
 
+        SelectedItemScroll();
+        GetMousePos();
+        ActiveBag();
+        SetAnim();
+    }
+
+
+
+    public void SelectedItemScroll()
+    {
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             //scroll up
@@ -93,15 +117,13 @@ public class PlayerController : MonoBehaviour
             }
             else
                 selectedItem = null;
-
         }
-
         hotBarSelector.transform.position = inventory.hotbarUISlot[selectSlotIndex].transform.position;
         //set selected item
         if (selectedItem != null)
         {
             handHolder.GetComponent<SpriteRenderer>().sprite = selectedItem.sprite;
-            if (selectedItem.itemType == ItemClass.ItemType.block)
+            if (selectedItem.itemType == ItemEnum.ItemType.block)
             {
                 handHolder.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
@@ -115,41 +137,71 @@ public class PlayerController : MonoBehaviour
             handHolder.GetComponent<SpriteRenderer>().sprite = null;
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            isInventoryShow = !isInventoryShow;
-        }
-
         if (Vector2.Distance(transform.position, mousePosFloat) <= playerRangeMax)
         {
             if (hit)
-                //terrainGeneration.RemoveTile(mousePos.x, mousePos.y);
+            {
+                if (selectedItem.weaponType == ItemEnum.WeaponType.sword)
+                {
+                    FindAttackEnemy();
+
+                }
                 terrainGeneration.BreakTile(mousePos.x, mousePos.y, selectedItem);
+            }
             else if (place && Vector2.Distance(transform.position, mousePosFloat) >= playerRangeMin)
             {
                 if (selectedItem != null)
                 {
-                    if (selectedItem.itemType == ItemClass.ItemType.block)
+                    if (selectedItem.itemType == ItemEnum.ItemType.block)
                     {
                         if (terrainGeneration.CheckTile(selectedItem.tile, mousePos.x, mousePos.y, true))
                             inventory.RemoveItem(selectedItem);
                     }
                 }
-
             }
-
-
         }
-
+    }
+    void FindAttackEnemy()
+    {
+        foreach (var item in enemyController.listEnemy)
+        {
+            float x = item.transform.position.x;
+            float y = item.transform.position.y;
+            if(Mathf.Abs(mousePosFloat.x - x)<= 1 && Mathf.Abs(mousePosFloat.y - y) <= 1)
+            {
+                item.GetComponent<EnemyClass>().ReceiveDamage(selectedItem.weapon.dame);
+            }
+        }
+    }
+    void ActiveBag()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            isInventoryShow = !isInventoryShow;
+        }
+        inventory.inventoryUI.SetActive(isInventoryShow);
+    }
+    void GetMousePos()
+    {
         mousePosFloat.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         mousePosFloat.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 
         mousePos.x = Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).x - 0.5f);
         mousePos.y = Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).y - 0.5f);
-
-        inventory.inventoryUI.SetActive(isInventoryShow);
-
+    }
+    void SetAnim()
+    {
         anim.SetFloat("horizontal", horizontal);
         anim.SetBool("hit", hit || place);
+    }
+    bool FootRayCast()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position - (Vector3.up * 0.5f), -Vector2.right * transform.localScale.x, 1f, layerMask);
+        return hit;
+    }
+    bool HeadRayCast()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + (Vector3.up * 0.5f), -Vector2.right * transform.localScale.x, 1f, layerMask);
+        return hit;
     }
 }
