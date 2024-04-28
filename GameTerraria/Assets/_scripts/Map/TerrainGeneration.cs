@@ -86,18 +86,18 @@ public class TerrainGeneration : MonoBehaviour
 
         DrawTexture();
         DrawCavesAndOres();
-        CreateChunks();
+        //CreateChunks();
         GenerateTerrain();
 
         worldTilesMap.Apply();
 
         playerController.Spawn();
         cameraController.Spawn(new Vector3(playerController.transform.position.x, playerController.transform.position.y, -10));
-        RefreshChunks();
+        //RefreshChunks();
     }
     private void Update()
     {
-        RefreshChunks();
+        //RefreshChunks();
     }
     void RefreshChunks()//tat mo chunk tung khu vuc
     {
@@ -326,6 +326,7 @@ public class TerrainGeneration : MonoBehaviour
             }
             else
             {
+
                 if (item.itemType == ItemEnum.ItemType.tool)
                 {
                     if (tile.toolToBreak == item.toolType)
@@ -337,6 +338,11 @@ public class TerrainGeneration : MonoBehaviour
             }
         }
         return false;
+    }
+    bool BreakTile(int i, int j)
+    {
+        RemoveTile(i, j);
+        return true;
     }
     public void RemoveTile(int i, int j)
     {
@@ -382,6 +388,10 @@ public class TerrainGeneration : MonoBehaviour
             {
                 if (GetTileFromWorld(i, j).isNaturallyPlace)
                 {
+                    if(GetTileFromWorld(i,j).tileDrop != null)
+                    {
+                        BreakTile(i, j);
+                    }
                     PlaceTile(tile, i, j, isNaturallyPlace);
                     return true;
                 }
@@ -420,7 +430,7 @@ public class TerrainGeneration : MonoBehaviour
 
             int chunkCoord = Mathf.RoundToInt(Mathf.Round(i / chunkSize) * chunkSize);
             chunkCoord /= chunkSize;
-            newTile.transform.parent = worldChunks[chunkCoord].transform;//Add vao chunks phu hop
+            //newTile.transform.parent = worldChunks[chunkCoord].transform;//Add vao chunks phu hop
             newTile.AddComponent<SpriteRenderer>();
 
             int spriteIndex = Random.Range(0, tile.tileSprites.Length);

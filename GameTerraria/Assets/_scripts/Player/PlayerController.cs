@@ -141,12 +141,15 @@ public class PlayerController : MonoBehaviour
         {
             if (hit)
             {
-                if (selectedItem.weaponType == ItemEnum.WeaponType.sword)
+                if(selectedItem != null)
                 {
-                    FindAttackEnemy();
-
+                    if (selectedItem.weaponType == ItemEnum.WeaponType.sword)
+                    {
+                        FindAttackEnemy();
+                    }
+                    terrainGeneration.BreakTile(mousePos.x, mousePos.y, selectedItem);
                 }
-                terrainGeneration.BreakTile(mousePos.x, mousePos.y, selectedItem);
+
             }
             else if (place && Vector2.Distance(transform.position, mousePosFloat) >= playerRangeMin)
             {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
@@ -20,17 +21,20 @@ public class Inventory : MonoBehaviour
     public int inventoryHeight;
     public InventorySlot[,] inventorySlots;
     public InventorySlot[] hotbarSlot;
+    public InventorySlot pickSlot;
 
     public GameObject[,] UISlots;
     public GameObject[] hotbarUISlot;
-
+    public GameObject pickUISlot;
     private void Start()
     {
         inventorySlots = new InventorySlot[inventoryWidth, inventoryHeight];
         hotbarSlot = new InventorySlot[inventoryWidth];
+        pickSlot = new InventorySlot();
 
         UISlots = new GameObject[inventoryWidth, inventoryHeight];
         hotbarUISlot = new GameObject[inventoryWidth];
+        pickUISlot = new GameObject();
 
         SetupUI();
         UpdateInventoryUI();
@@ -39,6 +43,11 @@ public class Inventory : MonoBehaviour
         AddItem(new ItemClass(start_Pickage));
         AddItem(new ItemClass(start_Sword));
     }
+    void Update()
+    {
+        Vector3 mouse = Input.mousePosition;
+        pickUISlot.transform.position = new Vector3(mouse.x -25, mouse.y -25, 0);
+    }
     void SetupUI()
     {
         //setup inventory
@@ -46,11 +55,16 @@ public class Inventory : MonoBehaviour
         {
             for (int i = 0; i < inventoryWidth; i++)
             {
+                int x = i;
+                int y = j;
                 GameObject objSlot = Instantiate(inventorySlotPrefab, Vector2.zero, Quaternion.identity, inventoryUI.transform.GetChild(0).GetChild(0).transform);
-                UISlots[i, j] = objSlot;
-                inventorySlots[i, j] = null;
+                objSlot.AddComponent<Button>();
+                objSlot.GetComponent<Button>().onClick.AddListener(() => { SelectItem(x, y); });
+                UISlots[x, y] = objSlot;
+                inventorySlots[x, y] = null;
             }
         }
+
 
         //setup hotbar
         for (int i = 0; i < inventoryWidth; i++)
@@ -59,6 +73,13 @@ public class Inventory : MonoBehaviour
             hotbarUISlot[i] = objHotBarSlot;
             hotbarSlot[i] = null;
         }
+
+        //setup pick
+        GameObject objPickSlot = Instantiate(inventorySlotPrefab, Vector2.zero, Quaternion.identity, inventoryUI.transform.GetChild(0).transform);
+        objPickSlot.SetActive(false);
+        objPickSlot.GetComponent<Image>().color = Color.clear;
+        pickUISlot = objPickSlot;
+        pickSlot = null;
     }
     void UpdateInventoryUI()
     {
@@ -106,6 +127,26 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        //update pickSlot
+        if(pickSlot==null)
+        {
+            pickUISlot.transform.GetChild(0).GetComponent<Image>().sprite = null;
+            pickUISlot.transform.GetChild(0).GetComponent<Image>().enabled = false;
+
+            pickUISlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "0";
+            pickUISlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().enabled = false;
+            pickUISlot.gameObject.SetActive(false);
+
+        }
+        else
+        {
+            pickUISlot.transform.GetChild(0).GetComponent<Image>().enabled = true;
+            pickUISlot.transform.GetChild(0).GetComponent<Image>().sprite = pickSlot.item.sprite;
+
+            pickUISlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = pickSlot.quantity.ToString();
+            pickUISlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().enabled = true;
+            pickUISlot.gameObject.SetActive(true);
+        }
     }
     public bool AddItem(ItemClass item)
     {
@@ -113,6 +154,7 @@ public class Inventory : MonoBehaviour
         if (itemPos != Vector2Int.one * -1)
         {
             InventorySlot slot = inventorySlots[itemPos.x, itemPos.y];
+            Debug.Log(slot.stackLimit + " " + slot.quantity);
             if (slot.quantity < slot.stackLimit)
             {
                 inventorySlots[itemPos.x, itemPos.y].quantity += 1;
@@ -146,7 +188,7 @@ public class Inventory : MonoBehaviour
                     if (inventorySlots[x, y].item.nameTool == item.nameTool)
                     {
                         if (item.isImpact && inventorySlots[x, y].quantity < inventorySlots[x, y].stackLimit)
-                            return inventorySlots[x, y].position;
+                            return new Vector2Int(x, y);
                     }
                 }
             }
@@ -178,5 +220,32 @@ public class Inventory : MonoBehaviour
             }
         }
         return false;
+    }
+    void SelectItem(int i, int j)
+    {
+        if(pickSlot != null)
+        {
+            if (inventorySlots[i, j] != null)
+            {
+                InventorySlot t = pickSlot;
+                pickSlot = inventorySlots[i, j];
+                inventorySlots[i, j] = t;
+            }
+            else
+            {
+                inventorySlots[i, j] = pickSlot;
+                pickSlot = null;
+            }
+            
+        }
+        else
+        {
+            if (inventorySlots[i, j] != null)
+            {
+                pickSlot = inventorySlots[i, j];
+                inventorySlots[i, j] = null;
+            }
+        }
+        UpdateInventoryUI();
     }
 }

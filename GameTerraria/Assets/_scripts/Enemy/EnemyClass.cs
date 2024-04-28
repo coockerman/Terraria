@@ -22,9 +22,10 @@ public class EnemyClass : MonoBehaviour
     {
         if (isDie) return;
         countHP -= damage;
+        Debug.Log(countHP);
+
         if (countHP < 0)
         {
-            Debug.Log(countHP);
             countHP = 0;
             Die();
         }

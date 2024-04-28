@@ -15,4 +15,4 @@ MonoBehaviour:
   nameWeapon: SwordA
   sprite: {fileID: 21300000, guid: 93cbf10f4d098ef4a8d234c329bd5504, type: 3}
   weaponType: 1
-  dame: 5
+  dame: 4

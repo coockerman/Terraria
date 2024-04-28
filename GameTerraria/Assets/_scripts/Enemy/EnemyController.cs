@@ -18,9 +18,14 @@ public class EnemyController : MonoBehaviour
         GameObject gojA = Instantiate(enemy);
         gojA.AddComponent<EnemyClass>();
         gojA.GetComponent<EnemyClass>().Init(slimeA);
+        gojA.transform.position = RandomPosEnemy();
         listEnemy.Add(gojA);
     }
     
-    
+    Vector3 RandomPosEnemy()
+    {
+        int x = Random.Range(0, 100);
+        return new Vector3(x, 100, 0);
+    }
     
 }
