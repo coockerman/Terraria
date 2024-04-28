@@ -211,8 +211,8 @@ public class Inventory : MonoBehaviour
                         if (inventorySlots[x, y].quantity == 0)
                         {
                             inventorySlots[x, y] = null;
-                        }
 
+                        }
                         UpdateInventoryUI();
                         return true;
                     }

@@ -16,6 +16,15 @@ public class ItemClass
     public string nameTool;
     public Sprite sprite;
     public bool isImpact;
+    public ItemClass()
+    {
+        nameTool = "";
+        sprite = null;
+        isImpact = false;
+        tile = null;
+        tool = null;
+        weapon = null;
+    }
 
     public ItemClass(TileClass _tile)
     {

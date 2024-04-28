@@ -110,32 +110,12 @@ public class PlayerController : MonoBehaviour
             if (selectSlotIndex > 0)
                 selectSlotIndex -= 1;
 
-            if (inventory.inventorySlots[selectSlotIndex, 0] != null)
-            {
-                selectedItem = inventory.inventorySlots[selectSlotIndex, 0].item;
-
-            }
-            else
-                selectedItem = null;
         }
+        UpdateSelectedItem();
+
         hotBarSelector.transform.position = inventory.hotbarUISlot[selectSlotIndex].transform.position;
         //set selected item
-        if (selectedItem != null)
-        {
-            handHolder.GetComponent<SpriteRenderer>().sprite = selectedItem.sprite;
-            if (selectedItem.itemType == ItemEnum.ItemType.block)
-            {
-                handHolder.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            }
-            else
-            {
-                handHolder.transform.localScale = new Vector3(1f, 1f, 1f);
-            }
-        }
-        else
-        {
-            handHolder.GetComponent<SpriteRenderer>().sprite = null;
-        }
+        
 
         if (Vector2.Distance(transform.position, mousePosFloat) <= playerRangeMax)
         {
@@ -157,11 +137,40 @@ public class PlayerController : MonoBehaviour
                 {
                     if (selectedItem.itemType == ItemEnum.ItemType.block)
                     {
-                        if (terrainGeneration.CheckTile(selectedItem.tile, mousePos.x, mousePos.y, true))
+                        if (terrainGeneration.CheckTile(selectedItem.tile, mousePos.x, mousePos.y, selectedItem.tile.isNaturallyPlace))
                             inventory.RemoveItem(selectedItem);
                     }
                 }
             }
+        }
+    }
+    public void UpdateSelectedItem()
+    {
+        if (inventory.inventorySlots[selectSlotIndex, 0] != null)
+        {
+            selectedItem = inventory.inventorySlots[selectSlotIndex, 0].item;
+        }
+        else
+        {
+            selectedItem = new ItemClass();
+            selectedItem = null;
+        }
+
+        if (selectedItem != null)
+        {
+            handHolder.GetComponent<SpriteRenderer>().sprite = selectedItem.sprite;
+            if (selectedItem.itemType == ItemEnum.ItemType.block)
+            {
+                handHolder.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
+            else
+            {
+                handHolder.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+        }
+        else if (selectedItem == null)
+        {
+            handHolder.GetComponent<SpriteRenderer>().sprite = null;
         }
     }
     void FindAttackEnemy()

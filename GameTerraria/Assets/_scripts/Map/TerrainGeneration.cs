@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class TerrainGeneration : MonoBehaviour
 {
@@ -241,16 +240,16 @@ public class TerrainGeneration : MonoBehaviour
                 {
                     if (caveNoiseTexture.GetPixel(i, j).r > 0.5f)
                     {
-                        PlaceTile(tileClass, i, j, true);
+                        PlaceTile(tileClass, i, j, tileClass.isNaturallyPlace);
                     }
                     else if (tileClass.wallVariant != null)
                     {
-                        PlaceTile(tileClass.wallVariant, i, j, true);
+                        PlaceTile(tileClass.wallVariant, i, j, tileClass.isNaturallyPlace);
                     }
                 }
                 else
                 {
-                    PlaceTile(tileClass, i, j, true);
+                    PlaceTile(tileClass, i, j, tileClass.isNaturallyPlace);
                 }
 
                 if (j >= height - 1)
@@ -279,7 +278,7 @@ public class TerrainGeneration : MonoBehaviour
                             if (GetTileFromWorld(i, j))
                             {
                                 if (curBiome.tileAtlas.tallGrass != null)
-                                    PlaceTile(curBiome.tileAtlas.tallGrass, i, j + 1, true);
+                                    PlaceTile(curBiome.tileAtlas.tallGrass, i, j + 1, curBiome.tileAtlas.tallGrass.isNaturallyPlace);
                             }
                         }
                     }
@@ -351,9 +350,12 @@ public class TerrainGeneration : MonoBehaviour
             TileClass tile = GetTileFromWorld(i, j);
             if (tile.wallVariant != null)
             {
-                Destroy(world_BackgroundObjects[i, j].gameObject);
+                if (world_BackgroundObjects[i,j] != null)
+                {
+                    Destroy(world_BackgroundObjects[i, j].gameObject);
+                }
                 if (tile.isNaturallyPlace)
-                    PlaceTile(tile.wallVariant, i, j, true);
+                    PlaceTile(tile.wallVariant, i, j, tile.isNaturallyPlace);
             }
 
             if (GetTileFromWorld(i, j).isNaturallyPlace || GetTileFromWorld(i, j) != null)
@@ -386,9 +388,12 @@ public class TerrainGeneration : MonoBehaviour
         {
             if (GetTileFromWorld(i, j) != null)
             {
+                Debug.Log("a");
                 if (GetTileFromWorld(i, j).isNaturallyPlace)
                 {
-                    if(GetTileFromWorld(i,j).tileDrop != null)
+                    Debug.Log("b");
+
+                    if (GetTileFromWorld(i,j).tileDrop != null)
                     {
                         BreakTile(i, j);
                     }
