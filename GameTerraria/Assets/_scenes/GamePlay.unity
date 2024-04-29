@@ -1215,10 +1215,6 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 287576885}
-    - target: {fileID: 3686957659485943930, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
-      propertyPath: start_Sword
-      value: 
-      objectReference: {fileID: 11400000, guid: a59d38d35bfed324fa0c120e1c10b60d, type: 2}
     - target: {fileID: 6305489685828651177, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
       propertyPath: m_Name
       value: Player_Root
@@ -1272,17 +1268,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1806427391}
     - target: {fileID: 9029241959601488526, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 9029241959601488526, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
       propertyPath: terrainGeneration
       value: 
       objectReference: {fileID: 1680373307}
-    - target: {fileID: 9029241959601488526, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
-      propertyPath: selectedItem.itemType
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1871,6 +1859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f9db39b0c418c46a13e7e029fbc516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 2122066556}
   slimeA: {fileID: 11400000, guid: 851e2dc3acb5ccd4083dfb9e41592d17, type: 2}
   listEnemy: []
   enemy: {fileID: 5458313603381842065, guid: 76081c76f64f24044bb1fea41db141c1, type: 3}
@@ -1937,6 +1926,17 @@ Texture2D:
     offset: 0
     size: 0
     path: 
+--- !u!114 &2122066556 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3591498852610191497, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
+  m_PrefabInstance: {fileID: 1217824151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5337fa2c2d84d44a77194facb445f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3662675652283885994
 MonoBehaviour:
   m_ObjectHideFlags: 0

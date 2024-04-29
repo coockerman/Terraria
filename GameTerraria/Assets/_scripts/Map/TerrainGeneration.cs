@@ -469,7 +469,7 @@ public class TerrainGeneration : MonoBehaviour
 
             newTile.name = tile.tileSprites[0].name;
             newTile.transform.position = new Vector2(i + 0.5f, j + 0.5f);
-
+            newTile.transform.parent = this.gameObject.transform;
             TileClass newTileClass = TileClass.CreateInstance(tile, isNaturallyPlace);
 
             AddObjectToWorld(i, j, newTile, newTileClass);

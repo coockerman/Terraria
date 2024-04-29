@@ -15,7 +15,8 @@ MonoBehaviour:
   tileName: Sand
   wallVariant: {fileID: 11400000, guid: c0d8e91d75370184ebcac173e2a21231, type: 2}
   tileSprites:
-  - {fileID: 21300000, guid: fc79e00f001f4d04e8454a94810ac3b6, type: 3}
+  - {fileID: -203738522, guid: afe56363c79502040b4780592fda0e00, type: 3}
   isImpact: 1
   tileDrop: {fileID: 11400000}
+  toolToBreak: 0
   isNaturallyPlace: 0

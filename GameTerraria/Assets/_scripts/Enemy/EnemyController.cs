@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public PlayerHealth playerHealth;
     public SlimeData slimeA;
     public List<GameObject> listEnemy = new List<GameObject>();
     public GameObject enemy;
@@ -17,7 +18,7 @@ public class EnemyController : MonoBehaviour
     {
         GameObject gojA = Instantiate(enemy);
         gojA.AddComponent<EnemyClass>();
-        gojA.GetComponent<EnemyClass>().Init(slimeA);
+        gojA.GetComponent<EnemyClass>().Init(slimeA, playerHealth);
         gojA.transform.position = RandomPosEnemy();
         listEnemy.Add(gojA);
     }

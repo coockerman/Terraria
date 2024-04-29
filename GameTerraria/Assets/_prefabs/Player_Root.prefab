@@ -516,6 +516,7 @@ GameObject:
   - component: {fileID: 9029241959601488526}
   - component: {fileID: 3686957659485943930}
   - component: {fileID: 3596225886903399323}
+  - component: {fileID: 3591498852610191497}
   m_Layer: 6
   m_Name: Player_Root
   m_TagString: Player
@@ -672,20 +673,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 55
   selectSlotIndex: 0
   hotBarSelector: {fileID: 0}
   handHolder: {fileID: 7291034502477173828}
   inventory: {fileID: 3686957659485943930}
+  enemyController: {fileID: 0}
   isInventoryShow: 0
   selectedItem:
-    itemType: 0
+    itemType: 1
     toolType: 0
+    weaponType: 0
     tile: {fileID: 0}
     tool: {fileID: 0}
+    weapon: {fileID: 0}
     nameTool: 
     sprite: {fileID: 0}
-    isStackable: 0
+    isImpact: 0
   terrainGeneration: {fileID: 0}
   playerRangeMax: 5
   playerRangeMin: 1
@@ -711,12 +715,14 @@ MonoBehaviour:
   start_Axe: {fileID: 11400000, guid: 2c4564b475421ba4b9b189587264d7e5, type: 2}
   start_Hammer: {fileID: 11400000, guid: cd3bc48e64ad2c8428045bb08a509d23, type: 2}
   start_Pickage: {fileID: 11400000, guid: b2dbf55ee17a1a943adc7e5144a46f86, type: 2}
+  start_Sword: {fileID: 11400000, guid: a59d38d35bfed324fa0c120e1c10b60d, type: 2}
   inventoryUI: {fileID: 0}
   hotbarUI: {fileID: 0}
   inventorySlotPrefab: {fileID: 4835103295354655352, guid: c728c20520b1fb941adadf5f6c9c2b65, type: 3}
   inventoryWidth: 10
   inventoryHeight: 3
   hotbarUISlot: []
+  pickUISlot: {fileID: 0}
 --- !u!95 &3596225886903399323
 Animator:
   serializedVersion: 5
@@ -738,6 +744,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3591498852610191497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305489685828651177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5337fa2c2d84d44a77194facb445f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPmax: 15
 --- !u!1 &7291034502477173828
 GameObject:
   m_ObjectHideFlags: 0

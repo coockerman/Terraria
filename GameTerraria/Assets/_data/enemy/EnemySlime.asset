@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4bf5aff07e69f43a56b1b6be1079f3, type: 3}
   m_Name: EnemySlime
   m_EditorClassIdentifier: 
+  layerPlayer:
+    serializedVersion: 2
+    m_Bits: 64
   nameEnemy: SlimeA
   maxHP: 10
   attack: 3
   speed: 3
+  attackSpeed: 3
