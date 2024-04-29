@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: tileLeaf
   m_EditorClassIdentifier: 
   tileName: tile Leaf
+  wallVariant: {fileID: 0}
   tileSprites:
-  - {fileID: 21300000, guid: 754ba9fffdf3cb349adb5c26f0d750db, type: 3}
+  - {fileID: 2022494403, guid: afe56363c79502040b4780592fda0e00, type: 3}
+  isImpact: 0
+  tileDrop: {fileID: 11400000}
+  toolToBreak: 0
+  isNaturallyPlace: 0
