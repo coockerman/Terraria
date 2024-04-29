@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: tileCoal
   m_EditorClassIdentifier: 
   tileName: Coal
+  wallVariant: {fileID: 11400000, guid: 3016f0a9b28c1ce42b5d1fcaffbce07d, type: 2}
   tileSprites:
   - {fileID: 21300000, guid: 2f412f0ad9221084d83a6dd6723e3163, type: 3}
   - {fileID: 21300000, guid: 58d3f5bbfdd778f439fe3af6abfe7aeb, type: 3}
+  isImpact: 1
+  tileDrop: {fileID: 11400000}
+  toolToBreak: 1
+  isNaturallyPlace: 0
