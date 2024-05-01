@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: KiemSat
   m_EditorClassIdentifier: 
   nameWeapon: "Ki\u1EBFm s\u1EAFt"
-  sprite: {fileID: 1804496909, guid: dabdac721b851234db84f9e0ff16e304, type: 3}
+  sprite: {fileID: 637299522, guid: d709b2c44c942f64bb4a0d567dba55f1, type: 3}
   weaponType: 1
   dame: 2
+  nguyenLieuCheTao:
+  - {fileID: 11400000, guid: 6e4e191da4622bd4faac8bf3e741372c, type: 2}
+  - {fileID: 11400000, guid: dc98a9e04b933f6418057eb94f0fec7e, type: 2}

@@ -67,11 +67,11 @@ public class PlayerController : MonoBehaviour
                 movement.y = jumpForce;
         }
 
-        if (FootRayCast() && !HeadRayCast() && movement.x != 0)
-        {
-            if (onGround)
-                movement.y = jumpForce;
-        }
+        //if (FootRayCast() && !HeadRayCast() && movement.x != 0)
+        //{
+        //    if (onGround)
+        //        movement.y = jumpForce;
+        //}
 
         rb.velocity = movement;
     }
@@ -181,12 +181,16 @@ public class PlayerController : MonoBehaviour
     {
         foreach (var item in enemyController.listEnemy)
         {
-            float x = item.transform.position.x;
-            float y = item.transform.position.y;
-            if(Mathf.Abs(mousePosFloat.x - x)<= 1 && Mathf.Abs(mousePosFloat.y - y) <= 1)
+            if(item != null)
             {
-                item.GetComponent<EnemyClass>().ReceiveDamage(selectedItem.weapon.dame);
+                float x = item.transform.position.x;
+                float y = item.transform.position.y;
+                if (Mathf.Abs(mousePosFloat.x - x) <= 1 && Mathf.Abs(mousePosFloat.y - y) <= 1)
+                {
+                    item.GetComponent<EnemyClass>().ReceiveDamage(selectedItem.weapon.dame);
+                }
             }
+            
         }
     }
     void ActiveBag()

@@ -28,6 +28,7 @@ public class Inventory : MonoBehaviour
     public GameObject pickUISlot;
 
     public WeaponClass[] ListAllWeapon;
+    public ToolClass[] ListAllTool;
     InventorySlot[] BanCheTaoSlot;
     InventorySlot KetQuaBanCheTao;
 
@@ -204,7 +205,7 @@ public class Inventory : MonoBehaviour
                 UiBanCheTaoSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
                 UiBanCheTaoSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = BanCheTaoSlot[i].item.sprite;
 
-                UiBanCheTaoSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = inventorySlots[i, 0].quantity.ToString();
+                UiBanCheTaoSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = BanCheTaoSlot[i].quantity.ToString();
                 UiBanCheTaoSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().enabled = true;
             }
         }
@@ -231,8 +232,9 @@ public class Inventory : MonoBehaviour
     }
     void XuLyCheTao()
     {
-        CheckCheTao();
-        if (KetQuaBanCheTao!=null)
+        CheckCheTaoWeapon();
+        CheckCheTaoTool();
+        if (KetQuaBanCheTao != null)
         {
             UiKetQuaBanCheTao.GetComponent<Button>().onClick.AddListener(() => { SelectKetQuaBanCheTao(); });
             UpdateInventoryUI();
@@ -246,7 +248,7 @@ public class Inventory : MonoBehaviour
             UpdateInventoryUI();
         }
     }
-    void CheckCheTao()
+    void CheckCheTaoWeapon()
     {
         for (int i = 0; i < ListAllWeapon.Length; i++)
         {
@@ -262,21 +264,60 @@ public class Inventory : MonoBehaviour
                         if (b.tileName.ToString() == a.item.nameTool.ToString())
                         {
                             isCheck = true;
-                            
+
                             break;
                         }
                     }
                 }
-                if (isCheck==false)
+                if (isCheck == false)
                 {
                     isCheck2 = false;
                     break;
                 }
             }
 
-            if(isCheck2 == true)
+            if (isCheck2 == true)
             {
                 KetQuaBanCheTao = new InventorySlot(new ItemClass(ListAllWeapon[i]));
+                return;
+            }
+            else
+            {
+                KetQuaBanCheTao = null;
+            }
+        }
+    }
+    void CheckCheTaoTool()
+    {
+        for (int i = 0; i < ListAllTool.Length; i++)
+        {
+            bool isCheck2 = true;
+            foreach (TileClass b in ListAllTool[i].nguyenLieuCheTao)
+            {
+                bool isCheck = false;
+                foreach (InventorySlot a in BanCheTaoSlot)
+                {
+                    Debug.Log(isCheck);
+                    if (b != null && a != null)
+                    {
+                        if (b.tileName.ToString() == a.item.nameTool.ToString())
+                        {
+                            isCheck = true;
+
+                            break;
+                        }
+                    }
+                }
+                if (isCheck == false)
+                {
+                    isCheck2 = false;
+                    break;
+                }
+            }
+
+            if (isCheck2 == true)
+            {
+                KetQuaBanCheTao = new InventorySlot(new ItemClass(ListAllTool[i]));
                 return;
             }
             else
@@ -289,7 +330,21 @@ public class Inventory : MonoBehaviour
     {
         foreach (TileClass nl in nguyenLieuXoa)
         {
-
+            for (int i = 0; i < BanCheTaoSlot.Length; i++)
+            {
+                if (BanCheTaoSlot[i] != null)
+                {
+                    if (nl.tileName.ToString() == BanCheTaoSlot[i].item.nameTool.ToString())
+                    {
+                        BanCheTaoSlot[i].quantity -= 1;
+                        if (BanCheTaoSlot[i].quantity == 0)
+                        {
+                            BanCheTaoSlot[i] = null;
+                        }
+                        break;
+                    }
+                }
+            }
         }
     }
     public bool AddItem(ItemClass item)
@@ -298,7 +353,6 @@ public class Inventory : MonoBehaviour
         if (itemPos != Vector2Int.one * -1)
         {
             InventorySlot slot = inventorySlots[itemPos.x, itemPos.y];
-            Debug.Log(slot.stackLimit + " " + slot.quantity);
             if (slot.quantity < slot.stackLimit)
             {
                 inventorySlots[itemPos.x, itemPos.y].quantity += 1;
@@ -329,10 +383,11 @@ public class Inventory : MonoBehaviour
             {
                 if (inventorySlots[x, y] != null)
                 {
-                    if (inventorySlots[x, y].item.nameTool == item.nameTool)
+                    if (inventorySlots[x, y].item.nameTool.ToString() == item.nameTool.ToString())
                     {
-                        if (item.isImpact && inventorySlots[x, y].quantity < inventorySlots[x, y].stackLimit)
-                            return new Vector2Int(x, y);
+                        if (item.itemType == ItemEnum.ItemType.block || item.itemType == ItemEnum.ItemType.ingredient)
+                            if (inventorySlots[x, y].quantity < inventorySlots[x, y].stackLimit)
+                                return new Vector2Int(x, y);
                     }
                 }
             }
@@ -427,6 +482,14 @@ public class Inventory : MonoBehaviour
             if (KetQuaBanCheTao != null)
             {
                 pickSlot = KetQuaBanCheTao;
+                if (KetQuaBanCheTao.item.weapon != null)
+                {
+                    RemoveDoCheTao(KetQuaBanCheTao.item.weapon.nguyenLieuCheTao);
+                }
+                else if (KetQuaBanCheTao.item.tool != null)
+                {
+                    RemoveDoCheTao(KetQuaBanCheTao.item.tool.nguyenLieuCheTao);
+                }
                 KetQuaBanCheTao = null;
             }
         }

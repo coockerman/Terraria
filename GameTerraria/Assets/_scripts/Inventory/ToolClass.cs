@@ -8,4 +8,5 @@ public class ToolClass : ScriptableObject
     public string nameTool;
     public Sprite sprite;
     public ItemEnum.ToolType toolType;
+    public TileClass[] nguyenLieuCheTao;
 }

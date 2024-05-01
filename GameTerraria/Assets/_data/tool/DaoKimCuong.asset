@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: DaoKimCuong
   m_EditorClassIdentifier: 
   nameTool: "Dao kim c\u01B0\u01A1ng"
-  sprite: {fileID: 1711079071, guid: dabdac721b851234db84f9e0ff16e304, type: 3}
+  sprite: {fileID: 556555696, guid: d709b2c44c942f64bb4a0d567dba55f1, type: 3}
   toolType: 4
+  nguyenLieuCheTao:
+  - {fileID: 11400000, guid: dc98a9e04b933f6418057eb94f0fec7e, type: 2}
+  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
+  - {fileID: 11400000, guid: 41ce81ed250f77041ab32d21b820c797, type: 2}
+  - {fileID: 11400000, guid: 4d96255793b334545b3ec1ecff587a75, type: 2}

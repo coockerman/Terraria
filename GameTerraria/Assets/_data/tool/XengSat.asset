@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: XengSat
   m_EditorClassIdentifier: 
   nameTool: "X\u1EBBng s\u1EAFt"
-  sprite: {fileID: -317562219, guid: dabdac721b851234db84f9e0ff16e304, type: 3}
+  sprite: {fileID: -1935559788, guid: d709b2c44c942f64bb4a0d567dba55f1, type: 3}
   toolType: 3
+  nguyenLieuCheTao:
+  - {fileID: 11400000, guid: dc98a9e04b933f6418057eb94f0fec7e, type: 2}
+  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
+  - {fileID: 11400000, guid: 6e4e191da4622bd4faac8bf3e741372c, type: 2}
+  - {fileID: 11400000, guid: bfc15e977e07da349ab7c16836720434, type: 2}

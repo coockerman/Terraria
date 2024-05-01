@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
     public List<GameObject> listEnemy = new List<GameObject>();
     public GameObject enemy;
 
+    public GameObject tileDrop;
+
     private void Start()
     {
         AddEnemy(slimeBlue);
@@ -27,7 +29,7 @@ public class EnemyController : MonoBehaviour
     {
         GameObject gojA = Instantiate(enemy);
         gojA.AddComponent<EnemyClass>();
-        gojA.GetComponent<EnemyClass>().Init(slime, playerHealth);
+        gojA.GetComponent<EnemyClass>().Init(slime, playerHealth, tileDrop);
         gojA.transform.position = RandomPosEnemy();
         listEnemy.Add(gojA);
     }

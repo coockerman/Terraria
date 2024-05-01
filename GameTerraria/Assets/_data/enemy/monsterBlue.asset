@@ -21,3 +21,4 @@ MonoBehaviour:
   attack: 3
   speed: 2
   attackSpeed: 3
+  vatpham: {fileID: 11400000, guid: 4d96255793b334545b3ec1ecff587a75, type: 2}

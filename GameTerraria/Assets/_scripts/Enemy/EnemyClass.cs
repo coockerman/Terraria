@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyClass : MonoBehaviour
 {
     [SerializeField] PlayerHealth playerHealth;
+    ItemClass itemEnemy;
+    GameObject tileDrop;
     public LayerMask layerPlayer;
     public string nameEnemy;
     public float maxHP;
@@ -78,10 +80,11 @@ public class EnemyClass : MonoBehaviour
         playerHealth.ReceiveDamage(attack);
         countDelayAttack = DelayAttack;
     }
-    public void Init(SlimeData slimeData, PlayerHealth playerHealth)
+    public void Init(SlimeData slimeData, PlayerHealth playerHealth, GameObject tileDrop)
     {
         this.playerHealth = playerHealth;
         gameObject.GetComponent<SpriteRenderer>().sprite = slimeData.sprite;
+        itemEnemy = new ItemClass(slimeData.vatpham);
         layerPlayer = slimeData.layerPlayer;
         nameEnemy = slimeData.nameEnemy;
         maxHP = slimeData.maxHP;
@@ -89,6 +92,7 @@ public class EnemyClass : MonoBehaviour
         attack = slimeData.attack;
         speed = slimeData.speed;
         DelayAttack = slimeData.attackSpeed;
+        this.tileDrop = tileDrop;
     }
     public void ReceiveDamage(int damage)
     {
@@ -104,8 +108,15 @@ public class EnemyClass : MonoBehaviour
     public void Die()
     {
         if (isDie) return;
-        Debug.Log("Chet roi");
         isDie = true;
+        if(itemEnemy != null)
+        {
+            GameObject newTileDrop = Instantiate(tileDrop, new Vector2(transform.position.x, transform.position.y + 0.5f), Quaternion.identity);
+            newTileDrop.GetComponent<SpriteRenderer>().sprite = itemEnemy.tile.tileSprites[0];
+            ItemClass tileDropItem = new ItemClass(itemEnemy.tile);
+            newTileDrop.GetComponent<TileCropController>().item = tileDropItem;
+        }
+        gameObject.SetActive(false);
     }
     bool RightCheck()
     {

@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: RiuDong
   m_EditorClassIdentifier: 
   nameTool: "R\xECu \u0111\u1ED3ng"
-  sprite: {fileID: -138158568, guid: dabdac721b851234db84f9e0ff16e304, type: 3}
+  sprite: {fileID: 1968461593, guid: d709b2c44c942f64bb4a0d567dba55f1, type: 3}
   toolType: 1
+  nguyenLieuCheTao:
+  - {fileID: 11400000, guid: dc98a9e04b933f6418057eb94f0fec7e, type: 2}
+  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
+  - {fileID: 11400000, guid: 2b89b82bd9492a94ea31fafaf18e2fb0, type: 2}
+  - {fileID: 11400000, guid: 4f715c49b811acb488c4aed792bf0f75, type: 2}

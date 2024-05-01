@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: DaoDong
   m_EditorClassIdentifier: 
   nameTool: "Dao \u0111\u1ED3ng"
-  sprite: {fileID: 1166307635, guid: dabdac721b851234db84f9e0ff16e304, type: 3}
+  sprite: {fileID: -420239783, guid: d709b2c44c942f64bb4a0d567dba55f1, type: 3}
   toolType: 4
+  nguyenLieuCheTao:
+  - {fileID: 11400000, guid: dc98a9e04b933f6418057eb94f0fec7e, type: 2}
+  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
+  - {fileID: 11400000, guid: 2b89b82bd9492a94ea31fafaf18e2fb0, type: 2}
+  - {fileID: 11400000, guid: 4d96255793b334545b3ec1ecff587a75, type: 2}

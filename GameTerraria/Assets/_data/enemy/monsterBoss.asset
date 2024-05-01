@@ -17,7 +17,8 @@ MonoBehaviour:
     m_Bits: 64
   sprite: {fileID: -612875636, guid: 56bba6c91848a98489bc930b6dfa1d4f, type: 3}
   nameEnemy: monsterBoss
-  maxHP: 10
-  attack: 3
+  maxHP: 25
+  attack: 4
   speed: 2
   attackSpeed: 3
+  vatpham: {fileID: 11400000, guid: 4f715c49b811acb488c4aed792bf0f75, type: 2}

@@ -12,5 +12,5 @@ public class SlimeData : ScriptableObject
     public float attack;
     public float speed;
     public float attackSpeed;
-
+    public TileClass vatpham;
 }

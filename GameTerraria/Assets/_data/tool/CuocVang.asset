@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: CuocVang
   m_EditorClassIdentifier: 
   nameTool: "Cu\u1ED1c v\xE0ng"
-  sprite: {fileID: 1157673391, guid: dabdac721b851234db84f9e0ff16e304, type: 3}
+  sprite: {fileID: 1516333241, guid: d709b2c44c942f64bb4a0d567dba55f1, type: 3}
   toolType: 2
+  nguyenLieuCheTao:
+  - {fileID: 11400000, guid: dc98a9e04b933f6418057eb94f0fec7e, type: 2}
+  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
+  - {fileID: 11400000, guid: a424001a89df17545a9f47fb282368f5, type: 2}
+  - {fileID: 11400000, guid: c91725fb84269e04589d5b7fd4b6c8fa, type: 2}
