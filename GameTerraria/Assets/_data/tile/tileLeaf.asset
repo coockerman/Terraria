@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
   m_Name: tileLeaf
   m_EditorClassIdentifier: 
-  tileName: tile Leaf
+  tileName: "L\xE1 c\xE2y"
   wallVariant: {fileID: 0}
   tileSprites:
-  - {fileID: 2022494403, guid: afe56363c79502040b4780592fda0e00, type: 3}
+  - {fileID: 21300000, guid: 754ba9fffdf3cb349adb5c26f0d750db, type: 3}
+  - {fileID: 21300000, guid: d9e0e471674608e40b05f91d3cbf9aa0, type: 3}
   isImpact: 0
   tileDrop: {fileID: 11400000}
-  toolToBreak: 0
+  toolToBreak: 4
   isNaturallyPlace: 0

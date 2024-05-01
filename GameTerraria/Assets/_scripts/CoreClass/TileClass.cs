@@ -12,6 +12,7 @@ public class TileClass : ScriptableObject
     public TileClass tileDrop;
     public ItemEnum.ToolType toolToBreak;
     public bool isNaturallyPlace = false;
+    public ItemEnum.ItemType type;
 
     public static TileClass CreateInstance(TileClass tileClass, bool isNaturallyPlace)
     {

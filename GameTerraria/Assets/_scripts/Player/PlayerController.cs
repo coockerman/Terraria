@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -149,13 +150,16 @@ public class PlayerController : MonoBehaviour
         if (inventory.inventorySlots[selectSlotIndex, 0] != null)
         {
             selectedItem = inventory.inventorySlots[selectSlotIndex, 0].item;
+            hotBarSelector.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text = selectedItem.nameTool;
         }
         else
         {
             selectedItem = new ItemClass();
             selectedItem = null;
-        }
+            hotBarSelector.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text = "";
 
+        }
+        //cap nhat sprite
         if (selectedItem != null)
         {
             handHolder.GetComponent<SpriteRenderer>().sprite = selectedItem.sprite;

@@ -6,9 +6,11 @@ using UnityEngine;
 public class SlimeData : ScriptableObject
 {
     public LayerMask layerPlayer;
+    public Sprite sprite;
     public string nameEnemy;
     public int maxHP;
     public float attack;
     public float speed;
     public float attackSpeed;
+
 }

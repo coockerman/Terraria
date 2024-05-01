@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
   m_Name: tileStone
   m_EditorClassIdentifier: 
-  tileName: tile Stone
+  tileName: "\u0110\xE1"
   wallVariant: {fileID: 11400000, guid: 3016f0a9b28c1ce42b5d1fcaffbce07d, type: 2}
   tileSprites:
   - {fileID: -322060607, guid: afe56363c79502040b4780592fda0e00, type: 3}
   isImpact: 1
   tileDrop: {fileID: 11400000}
-  toolToBreak: 1
+  toolToBreak: 2
   isNaturallyPlace: 0

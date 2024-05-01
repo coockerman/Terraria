@@ -62,11 +62,13 @@ public class EnemyClass : MonoBehaviour
     {
         if (i == 0)
         {
+            transform.localScale = new Vector3(1, 1, 1);
             Vector3 variable = new Vector3(1, 0, 0);
             transform.Translate(variable * speed * Time.deltaTime);
         }
         else
         {
+            transform.localScale = new Vector3(-1, 1, 1);
             Vector3 variable = new Vector3(-1, 0, 0);
             transform.Translate(variable * speed * Time.deltaTime);
         }
@@ -79,6 +81,7 @@ public class EnemyClass : MonoBehaviour
     public void Init(SlimeData slimeData, PlayerHealth playerHealth)
     {
         this.playerHealth = playerHealth;
+        gameObject.GetComponent<SpriteRenderer>().sprite = slimeData.sprite;
         layerPlayer = slimeData.layerPlayer;
         nameEnemy = slimeData.nameEnemy;
         maxHP = slimeData.maxHP;
@@ -93,9 +96,8 @@ public class EnemyClass : MonoBehaviour
         countHP -= damage;
         Debug.Log(countHP);
 
-        if (countHP < 0)
+        if (countHP <= 0)
         {
-            countHP = 0;
             Die();
         }
     }

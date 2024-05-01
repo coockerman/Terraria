@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
   m_Name: tileSand
   m_EditorClassIdentifier: 
-  tileName: Sand
+  tileName: "C\xE1t"
   wallVariant: {fileID: 11400000, guid: c0d8e91d75370184ebcac173e2a21231, type: 2}
   tileSprites:
   - {fileID: -203738522, guid: afe56363c79502040b4780592fda0e00, type: 3}
   isImpact: 1
   tileDrop: {fileID: 11400000}
-  toolToBreak: 0
+  toolToBreak: 3
   isNaturallyPlace: 0

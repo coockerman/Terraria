@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,10 +8,9 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public ToolClass start_Axe;
-    public ToolClass start_Hammer;
-    public ToolClass start_Pickage;
-    public WeaponClass start_Sword;
+    public ToolClass[] start_Tool;
+    public TileClass[] start_Tile;
+    public WeaponClass[] start_Weapon;
 
     public GameObject inventoryUI;
     public GameObject hotbarUI;
@@ -26,27 +26,51 @@ public class Inventory : MonoBehaviour
     public GameObject[,] UISlots;
     public GameObject[] hotbarUISlot;
     public GameObject pickUISlot;
+
+    public WeaponClass[] ListAllWeapon;
+    InventorySlot[] BanCheTaoSlot;
+    InventorySlot KetQuaBanCheTao;
+
+    GameObject[] UiBanCheTaoSlots;
+    GameObject UiKetQuaBanCheTao;
+
     private void Start()
     {
         inventorySlots = new InventorySlot[inventoryWidth, inventoryHeight];
         hotbarSlot = new InventorySlot[inventoryWidth];
         pickSlot = new InventorySlot();
+        BanCheTaoSlot = new InventorySlot[4];
+        KetQuaBanCheTao = new InventorySlot();
 
         UISlots = new GameObject[inventoryWidth, inventoryHeight];
         hotbarUISlot = new GameObject[inventoryWidth];
         pickUISlot = new GameObject();
+        UiBanCheTaoSlots = new GameObject[4];
+        UiKetQuaBanCheTao = new GameObject();
 
         SetupUI();
         UpdateInventoryUI();
-        AddItem(new ItemClass(start_Axe));
-        AddItem(new ItemClass(start_Hammer));
-        AddItem(new ItemClass(start_Pickage));
-        AddItem(new ItemClass(start_Sword));
+        StartAddItem();
     }
     void Update()
     {
         Vector3 mouse = Input.mousePosition;
-        pickUISlot.transform.position = new Vector3(mouse.x -25, mouse.y -25, 0);
+        pickUISlot.transform.position = new Vector3(mouse.x - 1, mouse.y - 1, 0);
+    }
+    void StartAddItem()
+    {
+        foreach (ToolClass tool in start_Tool)
+        {
+            AddItem(new ItemClass(tool));
+        }
+        foreach (TileClass tile in start_Tile)
+        {
+            AddItem(new ItemClass(tile));
+        }
+        foreach (WeaponClass weapon in start_Weapon)
+        {
+            AddItem(new ItemClass(weapon));
+        }
     }
     void SetupUI()
     {
@@ -65,6 +89,22 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        //setup banchetao
+        for (int i = 0; i < 4; i++)
+        {
+            int x = i;
+            GameObject objSlot = Instantiate(inventorySlotPrefab, Vector2.zero, Quaternion.identity, inventoryUI.transform.GetChild(0).GetChild(1).transform);
+            objSlot.AddComponent<Button>();
+            objSlot.GetComponent<Button>().onClick.AddListener(() => { SelectItemBanCheTao(x); });
+            UiBanCheTaoSlots[x] = objSlot;
+            BanCheTaoSlot[x] = null;
+        }
+
+        //setup ketqua banchetao
+        GameObject objKetQuaSlot = Instantiate(inventorySlotPrefab, Vector2.zero, Quaternion.identity, inventoryUI.transform.GetChild(0).GetChild(2).transform);
+        objKetQuaSlot.AddComponent<Button>();
+        UiKetQuaBanCheTao = objKetQuaSlot;
+        KetQuaBanCheTao = null;
 
         //setup hotbar
         for (int i = 0; i < inventoryWidth; i++)
@@ -77,6 +117,7 @@ public class Inventory : MonoBehaviour
         //setup pick
         GameObject objPickSlot = Instantiate(inventorySlotPrefab, Vector2.zero, Quaternion.identity, inventoryUI.transform.GetChild(0).transform);
         objPickSlot.SetActive(false);
+        objPickSlot.GetComponent<RectTransform>().pivot = Vector2.one;
         objPickSlot.GetComponent<Image>().color = Color.clear;
         pickUISlot = objPickSlot;
         pickSlot = null;
@@ -128,7 +169,7 @@ public class Inventory : MonoBehaviour
         }
 
         //update pickSlot
-        if(pickSlot==null)
+        if (pickSlot == null)
         {
             pickUISlot.transform.GetChild(0).GetComponent<Image>().sprite = null;
             pickUISlot.transform.GetChild(0).GetComponent<Image>().enabled = false;
@@ -146,6 +187,109 @@ public class Inventory : MonoBehaviour
             pickUISlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = pickSlot.quantity.ToString();
             pickUISlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().enabled = true;
             pickUISlot.gameObject.SetActive(true);
+        }
+        //update banchetao
+        for (int i = 0; i < 4; i++)
+        {
+            if (BanCheTaoSlot[i] == null)
+            {
+                UiBanCheTaoSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
+                UiBanCheTaoSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+
+                UiBanCheTaoSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "0";
+                UiBanCheTaoSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().enabled = false;
+            }
+            else
+            {
+                UiBanCheTaoSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+                UiBanCheTaoSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = BanCheTaoSlot[i].item.sprite;
+
+                UiBanCheTaoSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = inventorySlots[i, 0].quantity.ToString();
+                UiBanCheTaoSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().enabled = true;
+            }
+        }
+
+        //update ketqua banchetao
+        if (KetQuaBanCheTao == null)
+        {
+            UiKetQuaBanCheTao.transform.GetChild(0).GetComponent<Image>().sprite = null;
+            UiKetQuaBanCheTao.transform.GetChild(0).GetComponent<Image>().enabled = false;
+
+            UiKetQuaBanCheTao.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
+            UiKetQuaBanCheTao.transform.GetChild(1).GetComponent<TextMeshProUGUI>().enabled = false;
+        }
+        else
+        {
+            UiKetQuaBanCheTao.transform.GetChild(0).GetComponent<Image>().enabled = true;
+            UiKetQuaBanCheTao.transform.GetChild(0).GetComponent<Image>().sprite = KetQuaBanCheTao.item.sprite;
+
+            UiKetQuaBanCheTao.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "1";
+            UiKetQuaBanCheTao.transform.GetChild(1).GetComponent<TextMeshProUGUI>().enabled = true;
+        }
+
+
+    }
+    void XuLyCheTao()
+    {
+        CheckCheTao();
+        if (KetQuaBanCheTao!=null)
+        {
+            UiKetQuaBanCheTao.GetComponent<Button>().onClick.AddListener(() => { SelectKetQuaBanCheTao(); });
+            UpdateInventoryUI();
+            Debug.Log("Che tao thanh cong");
+
+        }
+        else
+        {
+            Debug.Log("Khong thanh pham");
+            UiKetQuaBanCheTao.GetComponent<Button>().onClick.RemoveAllListeners();
+            UpdateInventoryUI();
+        }
+    }
+    void CheckCheTao()
+    {
+        for (int i = 0; i < ListAllWeapon.Length; i++)
+        {
+            bool isCheck2 = true;
+            foreach (TileClass b in ListAllWeapon[i].nguyenLieuCheTao)
+            {
+                bool isCheck = false;
+                foreach (InventorySlot a in BanCheTaoSlot)
+                {
+                    Debug.Log(isCheck);
+                    if (b != null && a != null)
+                    {
+                        if (b.tileName.ToString() == a.item.nameTool.ToString())
+                        {
+                            isCheck = true;
+                            
+                            break;
+                        }
+                    }
+                }
+                if (isCheck==false)
+                {
+                    isCheck2 = false;
+                    break;
+                }
+            }
+
+            if(isCheck2 == true)
+            {
+                KetQuaBanCheTao = new InventorySlot(new ItemClass(ListAllWeapon[i]));
+                return;
+            }
+            else
+            {
+                KetQuaBanCheTao = null;
+            }
+        }
+    }
+    void RemoveDoCheTao(TileClass[] nguyenLieuXoa)
+    {
+        foreach (TileClass nl in nguyenLieuXoa)
+        {
+
         }
     }
     public bool AddItem(ItemClass item)
@@ -195,14 +339,14 @@ public class Inventory : MonoBehaviour
         }
         return Vector2Int.one * -1;
     }
-    
+
     public bool RemoveItem(ItemClass item)
     {
         for (int y = 0; y < inventoryHeight; y++)
         {
             for (int x = 0; x < inventoryWidth; x++)
             {
-                if(inventorySlots[x, y]!=null)
+                if (inventorySlots[x, y] != null)
                 {
                     if (inventorySlots[x, y].item.nameTool == item.nameTool)
                     {
@@ -223,7 +367,7 @@ public class Inventory : MonoBehaviour
     }
     void SelectItem(int i, int j)
     {
-        if(pickSlot != null)
+        if (pickSlot != null)
         {
             if (inventorySlots[i, j] != null)
             {
@@ -236,7 +380,7 @@ public class Inventory : MonoBehaviour
                 inventorySlots[i, j] = pickSlot;
                 pickSlot = null;
             }
-            
+
         }
         else
         {
@@ -244,6 +388,46 @@ public class Inventory : MonoBehaviour
             {
                 pickSlot = inventorySlots[i, j];
                 inventorySlots[i, j] = null;
+            }
+        }
+        UpdateInventoryUI();
+    }
+    void SelectItemBanCheTao(int i)
+    {
+        if (pickSlot != null)
+        {
+            if (BanCheTaoSlot[i] != null)
+            {
+                InventorySlot t = pickSlot;
+                pickSlot = BanCheTaoSlot[i];
+                BanCheTaoSlot[i] = t;
+            }
+            else
+            {
+                BanCheTaoSlot[i] = pickSlot;
+                pickSlot = null;
+            }
+
+        }
+        else
+        {
+            if (BanCheTaoSlot[i] != null)
+            {
+                pickSlot = BanCheTaoSlot[i];
+                BanCheTaoSlot[i] = null;
+            }
+        }
+        XuLyCheTao();
+        UpdateInventoryUI();
+    }
+    void SelectKetQuaBanCheTao()
+    {
+        if (pickSlot == null)
+        {
+            if (KetQuaBanCheTao != null)
+            {
+                pickSlot = KetQuaBanCheTao;
+                KetQuaBanCheTao = null;
             }
         }
         UpdateInventoryUI();

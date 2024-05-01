@@ -8,14 +8,16 @@ public class ItemEnum
     {
         block,
         tool,
-        weapon
+        weapon,
+        ingredient
     }
     public enum ToolType
     {
         none,
-        axe,
-        pickage,
-        hammer
+        Riu,
+        Cuoc,
+        Xeng,
+        Dao
     }
     public enum WeaponType
     {

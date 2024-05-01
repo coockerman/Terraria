@@ -31,7 +31,7 @@ public class ItemClass
         nameTool = _tile.tileName;
         sprite = _tile.tileDrop.tileSprites[0];
         isImpact = _tile.isImpact;
-        itemType = ItemEnum.ItemType.block;
+        itemType = _tile.type;
         tile = _tile;
     }
     public ItemClass(ToolClass _tool)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70afab713ea74ad429ce6cc2652d7ba5, type: 3}
   m_Name: AtlasSnow
   m_EditorClassIdentifier: 
-  grass: {fileID: 11400000, guid: e06cee51e6daa6f40973a7c05581d7fd, type: 2}
+  grass: {fileID: 11400000, guid: 98bb377129a207247a860011249be9bf, type: 2}
   dirt: {fileID: 11400000, guid: e06cee51e6daa6f40973a7c05581d7fd, type: 2}
   stone: {fileID: 11400000, guid: e06cee51e6daa6f40973a7c05581d7fd, type: 2}
   log: {fileID: 0}

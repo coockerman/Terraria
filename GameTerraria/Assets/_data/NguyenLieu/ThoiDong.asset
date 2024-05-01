@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
+  m_Name: ThoiDong
+  m_EditorClassIdentifier: 
+  tileName: "Th\u1ECFi \u0111\u1ED3ng"
+  wallVariant: {fileID: 0}
+  tileSprites:
+  - {fileID: 1049200514, guid: da1dec8df1715b1468bc45b15ff10c7c, type: 3}
+  isImpact: 0
+  tileDrop: {fileID: 11400000}
+  toolToBreak: 2
+  isNaturallyPlace: 0
+  type: 3

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
   m_Name: tileDirt
   m_EditorClassIdentifier: 
-  tileName: tile Dirt
+  tileName: "\u0110\u1EA5t"
   wallVariant: {fileID: 11400000, guid: fa54867073f1d54488d089a6c7deb8b6, type: 2}
   tileSprites:
   - {fileID: 436248150, guid: afe56363c79502040b4780592fda0e00, type: 3}
   isImpact: 1
   tileDrop: {fileID: 11400000}
-  toolToBreak: 2
+  toolToBreak: 3
   isNaturallyPlace: 0
+  type: 0

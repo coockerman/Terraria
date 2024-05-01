@@ -9,4 +9,5 @@ public class WeaponClass : ScriptableObject
     public Sprite sprite;
     public ItemEnum.WeaponType weaponType;
     public int dame;
+    public TileClass[] nguyenLieuCheTao;
 }

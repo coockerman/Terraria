@@ -8,15 +8,14 @@ public class InventorySlot
     public int stackLimit = 64;
     public int quantity;
     public ItemClass item;
+    
     public InventorySlot()
     {
 
     }
-    public InventorySlot(InventorySlot slot)
+    public InventorySlot(ItemClass item)
     {
-        position = slot.position;
-        stackLimit = slot.stackLimit;
-        quantity = slot.quantity;
-        item = slot.item;
+        this.item = item;
+        quantity = 1;
     }
 }
