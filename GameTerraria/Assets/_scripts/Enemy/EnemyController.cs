@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
     public SlimeData slimeWhite;
     public SlimeData slimeGreen;
     public SlimeData slimeBoss;
+
+    
     public List<GameObject> listEnemy = new List<GameObject>();
     public GameObject enemy;
 

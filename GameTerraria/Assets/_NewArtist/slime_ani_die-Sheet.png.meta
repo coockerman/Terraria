@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -37,24 +37,24 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -121,18 +121,588 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 323
+        width: 83
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51952fb306e746440bcbfac33760aa82
+      internalID: -1745806758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 321
+        width: 86
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc144d9715b38f84f8675d044d92a552
+      internalID: -1641515359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 318
+        width: 91
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08054a353705e654d86e8e82c9dbc7d3
+      internalID: -671672818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 320
+        width: 88
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da1b50a506a3f4a4d8e782b095e282d6
+      internalID: -57113759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 321
+        width: 86
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a324c8fb4b03b314ca379c49122683cb
+      internalID: -1791428965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 244
+        width: 83
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35aace4a2998476418e9818068493d45
+      internalID: 1660440038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 243
+        width: 87
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8a94f528d7740a47885fb434dc0f16a
+      internalID: -705407613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 242
+        width: 92
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 664418deaddd98241893eab22688e83b
+      internalID: -692691133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 238
+        width: 89
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e5da97206de5bf4e94e44275d7ebabb
+      internalID: 191724468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 172
+        width: 83
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8b37a65b23fe6e44a8f1cb4df52838e
+      internalID: 1741048260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 171
+        width: 89
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e24a99c86b7687449a0fdbb276510212
+      internalID: 417380306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 239
+        width: 82
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3adb7e8a6008da948ad207e4fbbadb89
+      internalID: -385717346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 171
+        width: 92
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7741f8f26d5e0df4b9db287268322bbf
+      internalID: 1567563964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 171
+        width: 88
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f4f2dd3b74dcf4bb4017b17ce2d769
+      internalID: -1462905327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 169
+        width: 86
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31157a8041c92d84bbca6339915fb5a5
+      internalID: 2146040085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 100
+        width: 83
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01014458638377248b6e4fdcbea4ea40
+      internalID: -625719563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 99
+        width: 87
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c6a15c179b8fdd4fa830bf28268f1ae
+      internalID: 1129228582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 98
+        width: 87
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ab91bf2e499f9b488a18b37518e3479
+      internalID: 1335030301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 98
+        width: 94
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf6d557dbf2ec7f4d8157b3b4a93927b
+      internalID: 1839449258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 97
+        width: 86
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3728a28b06808494184da920da61b03d
+      internalID: -1952307985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 25
+        width: 83
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e5a722fddfaea41ab8c6ab31cd0022
+      internalID: 689761076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 24
+        width: 88
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baed66e517bfe8d45880316d3cf134a6
+      internalID: 343645988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 23
+        width: 93
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32dd3b5cfc45da54d922d7dd55196d2c
+      internalID: -1436934876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 22
+        width: 97
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d2aebe68dfb554b88b6ccd19cb0d28
+      internalID: 615510384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_ani_die-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 20
+        width: 97
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aad557f6d4752474fbd5a51a9fea51a4
+      internalID: -1073494635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c357ada86e00e784c86ad78e76b4ed0e
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      slime_ani_die-Sheet_0: -1745806758
+      slime_ani_die-Sheet_1: -1641515359
+      slime_ani_die-Sheet_10: 1660440038
+      slime_ani_die-Sheet_11: -705407613
+      slime_ani_die-Sheet_12: -692691133
+      slime_ani_die-Sheet_13: 936767905
+      slime_ani_die-Sheet_14: 1089915914
+      slime_ani_die-Sheet_15: 191724468
+      slime_ani_die-Sheet_16: -1967797443
+      slime_ani_die-Sheet_17: 1741048260
+      slime_ani_die-Sheet_18: 417380306
+      slime_ani_die-Sheet_19: -1419797135
+      slime_ani_die-Sheet_2: 396707978
+      slime_ani_die-Sheet_20: -385717346
+      slime_ani_die-Sheet_21: -1709649892
+      slime_ani_die-Sheet_22: 1567563964
+      slime_ani_die-Sheet_23: -1590299247
+      slime_ani_die-Sheet_24: 1102152692
+      slime_ani_die-Sheet_25: -1462905327
+      slime_ani_die-Sheet_26: 2146040085
+      slime_ani_die-Sheet_27: -625719563
+      slime_ani_die-Sheet_28: 1129228582
+      slime_ani_die-Sheet_29: 1335030301
+      slime_ani_die-Sheet_3: -1881484465
+      slime_ani_die-Sheet_30: -1899383656
+      slime_ani_die-Sheet_31: 620528728
+      slime_ani_die-Sheet_32: 1839449258
+      slime_ani_die-Sheet_33: -1217117570
+      slime_ani_die-Sheet_34: -1952307985
+      slime_ani_die-Sheet_35: 689761076
+      slime_ani_die-Sheet_36: 343645988
+      slime_ani_die-Sheet_37: -1189106823
+      slime_ani_die-Sheet_38: -1436934876
+      slime_ani_die-Sheet_39: -453300783
+      slime_ani_die-Sheet_4: -671672818
+      slime_ani_die-Sheet_40: 615510384
+      slime_ani_die-Sheet_41: 66914471
+      slime_ani_die-Sheet_42: 993751364
+      slime_ani_die-Sheet_43: 1947794306
+      slime_ani_die-Sheet_44: -1073494635
+      slime_ani_die-Sheet_5: -1817783563
+      slime_ani_die-Sheet_6: -834025056
+      slime_ani_die-Sheet_7: 397515323
+      slime_ani_die-Sheet_8: -57113759
+      slime_ani_die-Sheet_9: -1791428965
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
