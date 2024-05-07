@@ -429,13 +429,12 @@ public class TerrainGeneration : MonoBehaviour
     }
     void PlaceTile(TileClass tile, int i, int j, bool isNaturallyPlace)
     {
-        if (i >= 0 && i < worldSize && j >= 0 && j < worldSize)//Kiem tra toa do diem
+        if (i >= 0 && i < worldSize && j >= 0 && j < worldSize && GetTileFromWorld(i,j) == null)//Kiem tra toa do diem
         {
             GameObject newTile = new GameObject();
 
             int chunkCoord = Mathf.RoundToInt(Mathf.Round(i / chunkSize) * chunkSize);
             chunkCoord /= chunkSize;
-            //newTile.transform.parent = worldChunks[chunkCoord].transform;//Add vao chunks phu hop
             newTile.AddComponent<SpriteRenderer>();
 
             int spriteIndex = Random.Range(0, tile.tileSprites.Length);

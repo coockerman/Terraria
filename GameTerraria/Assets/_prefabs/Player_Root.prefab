@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -244858015
   m_SortingLayer: 1
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: d96372498f1f27845866c18a1d393126, type: 3}
+  m_Sprite: {fileID: 72069402, guid: 7f94ec127c52b2a4d804a3d89863e172, type: 3}
   m_Color: {r: 0.764151, g: 0.76174796, b: 0.76174796, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 3278646387990308074}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.24, z: 0}
+  m_LocalPosition: {x: 0.044, y: 0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: -244858015
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e3edae8c78571bf4184d110092a7f2aa, type: 3}
+  m_Sprite: {fileID: -1371357294, guid: 261a689215bd4ac42aaae27cd3f4c382, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -321,7 +321,7 @@ SpriteRenderer:
   m_SortingLayerID: -244858015
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 627b5ee238e373c4bb8f34d38f3960f5, type: 3}
+  m_Sprite: {fileID: 1401221989, guid: a9d6a237364ba0e45990e74c4e3be18c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -405,7 +405,7 @@ SpriteRenderer:
   m_SortingLayerID: -244858015
   m_SortingLayer: 1
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 627b5ee238e373c4bb8f34d38f3960f5, type: 3}
+  m_Sprite: {fileID: 1401221989, guid: a9d6a237364ba0e45990e74c4e3be18c, type: 3}
   m_Color: {r: 0.764151, g: 0.76174796, b: 0.76174796, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -490,7 +490,7 @@ SpriteRenderer:
   m_SortingLayerID: -244858015
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: d96372498f1f27845866c18a1d393126, type: 3}
+  m_Sprite: {fileID: 72069402, guid: 7f94ec127c52b2a4d804a3d89863e172, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -586,7 +586,7 @@ SpriteRenderer:
   m_SortingLayerID: -244858015
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 03685d53880ae49478f72e57f975d055, type: 3}
+  m_Sprite: {fileID: 1174472386, guid: 457bd843acba43948954d82b10cf1012, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -713,32 +713,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   start_Tool:
-  - {fileID: 11400000, guid: 2c4564b475421ba4b9b189587264d7e5, type: 2}
-  - {fileID: 11400000, guid: 6c1df0c45bde56643973be82bacf9acc, type: 2}
-  - {fileID: 11400000, guid: 3cc3d6cd38ae515488d1d7ed9936482f, type: 2}
-  - {fileID: 11400000, guid: 79e1056fca28269449e47be5f7f89e25, type: 2}
-  - {fileID: 11400000, guid: cd3bc48e64ad2c8428045bb08a509d23, type: 2}
   - {fileID: 11400000, guid: 85ec972a0fa227f4fb4c5c536d7550fe, type: 2}
-  - {fileID: 11400000, guid: eb1dbb058523c7a43885bcae050d7971, type: 2}
-  - {fileID: 11400000, guid: 3b9db63c8fb4f1c41b826f72c0bdaa19, type: 2}
-  - {fileID: 11400000, guid: b2dbf55ee17a1a943adc7e5144a46f86, type: 2}
-  - {fileID: 11400000, guid: d22b85a2bb3480c4c829bfd08060b8a5, type: 2}
-  - {fileID: 11400000, guid: e9dc68d9384935a479534d92529d1711, type: 2}
-  - {fileID: 11400000, guid: e9cd87efbd4a02e49b709e0fc73fd2b6, type: 2}
-  - {fileID: 11400000, guid: 02f355c56eadacc43ab019c45d369d7f, type: 2}
   - {fileID: 11400000, guid: d6eb395c6c09b6c46978a72940af8f21, type: 2}
-  - {fileID: 11400000, guid: d34ef25eabb5ea540bc75adff02c6938, type: 2}
-  - {fileID: 11400000, guid: 247dd98c370c5204f9d25446e8f2cf86, type: 2}
+  - {fileID: 11400000, guid: 6c1df0c45bde56643973be82bacf9acc, type: 2}
+  - {fileID: 11400000, guid: d22b85a2bb3480c4c829bfd08060b8a5, type: 2}
   start_Tile:
   - {fileID: 11400000, guid: ba7918cd3ad0abf47972c5a643de839e, type: 2}
   - {fileID: 11400000, guid: d86049bec20128f4eaa3d2cb4b67cc6f, type: 2}
   - {fileID: 11400000, guid: 73c7ce1e84cc0cf469c230f1a861bd9e, type: 2}
+  - {fileID: 11400000, guid: 2b89b82bd9492a94ea31fafaf18e2fb0, type: 2}
+  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
   start_Weapon:
   - {fileID: 11400000, guid: a59d38d35bfed324fa0c120e1c10b60d, type: 2}
   - {fileID: 11400000, guid: bb388dbb70a3a584b86aeac56768057c, type: 2}
   - {fileID: 11400000, guid: 66918f4d5a25ca24aba5cbd25b23d0e1, type: 2}
   - {fileID: 11400000, guid: 22002a03c9899474fbc43730b1344e21, type: 2}
   - {fileID: 11400000, guid: de3a9b7374bfafd49aaf985a93b58d29, type: 2}
+  - {fileID: 11400000, guid: 3d32796c18720b3408953830fa8414c5, type: 2}
   inventoryUI: {fileID: 0}
   hotbarUI: {fileID: 0}
   inventorySlotPrefab: {fileID: 4835103295354655352, guid: c728c20520b1fb941adadf5f6c9c2b65, type: 3}
@@ -746,6 +737,28 @@ MonoBehaviour:
   inventoryHeight: 3
   hotbarUISlot: []
   pickUISlot: {fileID: 0}
+  ListAllWeapon:
+  - {fileID: 11400000, guid: bb388dbb70a3a584b86aeac56768057c, type: 2}
+  - {fileID: 11400000, guid: 22002a03c9899474fbc43730b1344e21, type: 2}
+  - {fileID: 11400000, guid: a59d38d35bfed324fa0c120e1c10b60d, type: 2}
+  - {fileID: 11400000, guid: 66918f4d5a25ca24aba5cbd25b23d0e1, type: 2}
+  ListAllTool:
+  - {fileID: 11400000, guid: 85ec972a0fa227f4fb4c5c536d7550fe, type: 2}
+  - {fileID: 11400000, guid: 3b9db63c8fb4f1c41b826f72c0bdaa19, type: 2}
+  - {fileID: 11400000, guid: cd3bc48e64ad2c8428045bb08a509d23, type: 2}
+  - {fileID: 11400000, guid: eb1dbb058523c7a43885bcae050d7971, type: 2}
+  - {fileID: 11400000, guid: d6eb395c6c09b6c46978a72940af8f21, type: 2}
+  - {fileID: 11400000, guid: 247dd98c370c5204f9d25446e8f2cf86, type: 2}
+  - {fileID: 11400000, guid: 02f355c56eadacc43ab019c45d369d7f, type: 2}
+  - {fileID: 11400000, guid: d34ef25eabb5ea540bc75adff02c6938, type: 2}
+  - {fileID: 11400000, guid: 6c1df0c45bde56643973be82bacf9acc, type: 2}
+  - {fileID: 11400000, guid: 79e1056fca28269449e47be5f7f89e25, type: 2}
+  - {fileID: 11400000, guid: 2c4564b475421ba4b9b189587264d7e5, type: 2}
+  - {fileID: 11400000, guid: 3cc3d6cd38ae515488d1d7ed9936482f, type: 2}
+  - {fileID: 11400000, guid: d22b85a2bb3480c4c829bfd08060b8a5, type: 2}
+  - {fileID: 11400000, guid: e9cd87efbd4a02e49b709e0fc73fd2b6, type: 2}
+  - {fileID: 11400000, guid: b2dbf55ee17a1a943adc7e5144a46f86, type: 2}
+  - {fileID: 11400000, guid: e9dc68d9384935a479534d92529d1711, type: 2}
 --- !u!95 &3596225886903399323
 Animator:
   serializedVersion: 5

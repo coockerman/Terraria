@@ -5,13 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-    public SlimeData slimeBlue;
-    public SlimeData slimeRed;
-    public SlimeData slimeYellow;
-    public SlimeData slimeWhite;
-    public SlimeData slimeGreen;
-    public SlimeData slimeBoss;
-
+    public SlimeData[] slimes;
     
     public List<GameObject> listEnemy = new List<GameObject>();
     public GameObject enemy;
@@ -20,12 +14,15 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        AddEnemy(slimeBlue);
-        AddEnemy(slimeRed);
-        AddEnemy(slimeYellow);
-        AddEnemy(slimeWhite);
-        AddEnemy(slimeGreen);
-        AddEnemy(slimeBoss);
+        RenderSlime();
+        StartCoroutine(RandomInGame());
+    }
+    void RenderSlime()
+    {
+        foreach(SlimeData slime in slimes)
+        {
+            AddEnemy(slime);
+        }
     }
     void AddEnemy(SlimeData slime)
     {
@@ -35,11 +32,21 @@ public class EnemyController : MonoBehaviour
         gojA.transform.position = RandomPosEnemy();
         listEnemy.Add(gojA);
     }
-    
+    IEnumerator RandomInGame()
+    {
+        while(true)
+        {
+            float t = Random.Range(3, 10);
+            yield return new WaitForSeconds(t);
+
+            int b = Random.Range(0, slimes.Length - 2);
+            AddEnemy(slimes[b]);
+        }
+    }
     Vector3 RandomPosEnemy()
     {
-        int x = Random.Range(0, 100);
-        return new Vector3(x, 100, 0);
+        int x = Random.Range(20, 80);
+        return new Vector3(x, 80, 0);
     }
     
 }

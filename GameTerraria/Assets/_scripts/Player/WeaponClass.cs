@@ -9,5 +9,7 @@ public class WeaponClass : ScriptableObject
     public Sprite sprite;
     public ItemEnum.WeaponType weaponType;
     public int dame;
+    public float phamvi;
     public TileClass[] nguyenLieuCheTao;
+    public GameObject bow;
 }

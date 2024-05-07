@@ -1,0 +1,356 @@
+fileFormatVersion: 2
+guid: 5964360401c3c2144abb50347df83342
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spider_anim_die_boss-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 38
+        width: 247
+        height: 140
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5395a5734c57e24d982566ca916abdc
+      internalID: -1958715110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_anim_die_boss-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 39
+        width: 245
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e657f62920dcd404d9535a7e01124d75
+      internalID: 708478421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_anim_die_boss-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 8
+        width: 217
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 218457df2041ac2438c384d3d140bf65
+      internalID: -911045038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_anim_die_boss-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 8
+        width: 226
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75559ff22a2f49547a971f87817ef245
+      internalID: -1465616782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_anim_die_boss-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1396
+        y: 33
+        width: 241
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f0b4d5eb0fbd441bb7109d2400b0b7
+      internalID: -1012624713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_anim_die_boss-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1733
+        y: 33
+        width: 242
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89315b79068d4a94c8adb170354c7b80
+      internalID: 1871692215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_anim_die_boss-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 97
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1df50805c0273d548bb49ec920372be6
+      internalID: -1511497693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_anim_die_boss-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 2076
+        y: 33
+        width: 223
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6077cfca48a66046988c22914d4ad4f
+      internalID: 477464115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spider_anim_die_boss-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 2378
+        y: 28
+        width: 281
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0475c225c1fedab459d3abf117134336
+      internalID: -505053111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5a77b88a8cd43fc4e8ff1477a3d6e6cf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      spider_anim_die_boss-Sheet_0: -1958715110
+      spider_anim_die_boss-Sheet_1: 708478421
+      spider_anim_die_boss-Sheet_10: 1939875895
+      spider_anim_die_boss-Sheet_11: 1296545511
+      spider_anim_die_boss-Sheet_12: -974844860
+      spider_anim_die_boss-Sheet_13: 1323463952
+      spider_anim_die_boss-Sheet_14: -716654109
+      spider_anim_die_boss-Sheet_15: 140676347
+      spider_anim_die_boss-Sheet_16: -1511497693
+      spider_anim_die_boss-Sheet_17: -334214310
+      spider_anim_die_boss-Sheet_18: 1690321397
+      spider_anim_die_boss-Sheet_19: 1467898808
+      spider_anim_die_boss-Sheet_2: -911045038
+      spider_anim_die_boss-Sheet_20: 2132299716
+      spider_anim_die_boss-Sheet_21: 477464115
+      spider_anim_die_boss-Sheet_22: 273576461
+      spider_anim_die_boss-Sheet_23: 919721418
+      spider_anim_die_boss-Sheet_24: 2066031716
+      spider_anim_die_boss-Sheet_25: -775980615
+      spider_anim_die_boss-Sheet_26: 746184357
+      spider_anim_die_boss-Sheet_3: -1465616782
+      spider_anim_die_boss-Sheet_4: -505053111
+      spider_anim_die_boss-Sheet_5: 1271949370
+      spider_anim_die_boss-Sheet_6: -1012624713
+      spider_anim_die_boss-Sheet_7: 1871692215
+      spider_anim_die_boss-Sheet_8: -544300306
+      spider_anim_die_boss-Sheet_9: -1304315148
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

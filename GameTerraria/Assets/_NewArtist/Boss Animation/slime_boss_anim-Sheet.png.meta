@@ -1,0 +1,557 @@
+fileFormatVersion: 2
+guid: 49a0efe4211d7bf40a0870c8486d0dde
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 309
+        width: 375
+        height: 254
+      alignment: 9
+      pivot: {x: 0.5, y: 0.19685039}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02026381882d1ee4f95aeb955816f282
+      internalID: 565660590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 309
+        width: 398
+        height: 261
+      alignment: 9
+      pivot: {x: 0.5, y: 0.19157088}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f31799c0dc3f67d40b1c868657e6336b
+      internalID: -1762190677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1283
+        y: 309
+        width: 403
+        height: 252
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1984127}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad3af78e33831841a58b16cf6797d03
+      internalID: 1047208468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 309
+        width: 325
+        height: 217
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23041475}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f6d062b643a054192bc281d44f3f83
+      internalID: 1618624448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1695
+        y: 309
+        width: 418
+        height: 195
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25641027}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 827c7e1f492a59a42b6f207fbe484090
+      internalID: 851483437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 2119
+        y: 309
+        width: 418
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.36764705}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d3ec8f4e70d9dc46b445945d73804f2
+      internalID: -2113907584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 2543
+        y: 305
+        width: 419
+        height: 134
+      alignment: 9
+      pivot: {x: 0.5, y: 0.37313432}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ea060ee54a70b4486282e77d748a0c
+      internalID: -1023264865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 2968
+        y: 309
+        width: 418
+        height: 58
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f30337fc51eb7e43a6d9ad329c673ae
+      internalID: -183607157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10
+        width: 320
+        height: 218
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2293578}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf55790abfda63a42abd1328a73d17a7
+      internalID: -341031377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 38
+        width: 336
+        height: 199
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2512563}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c0ac1f5e14884546b965920919429c9
+      internalID: -159192978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 51
+        width: 343
+        height: 175
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d99b7b03db0edb47904ff46355ff58f
+      internalID: 1698375156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 111
+        width: 333
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2777778}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7cd3e7273b659a4d9056c484b54cd95
+      internalID: -689820658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 1693
+        y: 86
+        width: 316
+        height: 161
+      alignment: 9
+      pivot: {x: 0.5, y: 0.310559}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f054381d4753d64da14c15f200f5cb1
+      internalID: 1339733233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 2117
+        y: 32
+        width: 300
+        height: 141
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35460994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc8342905f4b61f47948421f9dcb5e6a
+      internalID: -1813807220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 2545
+        y: 24
+        width: 327
+        height: 149
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33557048}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bd1e31babb89e246b2bc05e2178d08c
+      internalID: 1842212833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 2966
+        y: 20
+        width: 321
+        height: 132
+      alignment: 9
+      pivot: {x: 0.5, y: 0.37878788}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c1abd338985e3244a0bb903ac4f43a5
+      internalID: 1267926060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 3394
+        y: 7
+        width: 313
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2631579}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a39f0d415f570045b81d79f42c4876b
+      internalID: -1384545653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_boss_anim-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 3815
+        y: 5
+        width: 334
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23041475}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 197a8cf4da90c7a4786635041bbbae2e
+      internalID: -760419846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 97dfc1afd7db9264989e0eee3149f082
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      slime_boss_anim-Sheet_0: 565660590
+      slime_boss_anim-Sheet_1: -1762190677
+      slime_boss_anim-Sheet_10: 902355145
+      slime_boss_anim-Sheet_11: -1400408246
+      slime_boss_anim-Sheet_12: 337448997
+      slime_boss_anim-Sheet_13: -1773743406
+      slime_boss_anim-Sheet_14: 1006735782
+      slime_boss_anim-Sheet_15: 1280319860
+      slime_boss_anim-Sheet_16: 405469320
+      slime_boss_anim-Sheet_17: -1706526052
+      slime_boss_anim-Sheet_18: -1788716842
+      slime_boss_anim-Sheet_19: 358831296
+      slime_boss_anim-Sheet_2: 1047208468
+      slime_boss_anim-Sheet_20: -2113907584
+      slime_boss_anim-Sheet_21: -1023264865
+      slime_boss_anim-Sheet_22: -183607157
+      slime_boss_anim-Sheet_23: 156723026
+      slime_boss_anim-Sheet_24: 154638611
+      slime_boss_anim-Sheet_25: 1884146079
+      slime_boss_anim-Sheet_26: 627034498
+      slime_boss_anim-Sheet_27: -1482099198
+      slime_boss_anim-Sheet_28: -1041175086
+      slime_boss_anim-Sheet_29: -341031377
+      slime_boss_anim-Sheet_3: -1958534562
+      slime_boss_anim-Sheet_30: -159192978
+      slime_boss_anim-Sheet_31: 1698375156
+      slime_boss_anim-Sheet_32: -689820658
+      slime_boss_anim-Sheet_33: 1339733233
+      slime_boss_anim-Sheet_34: -1813807220
+      slime_boss_anim-Sheet_35: 1842212833
+      slime_boss_anim-Sheet_36: 1267926060
+      slime_boss_anim-Sheet_37: -1384545653
+      slime_boss_anim-Sheet_38: -760419846
+      slime_boss_anim-Sheet_4: -1335317836
+      slime_boss_anim-Sheet_5: 1618624448
+      slime_boss_anim-Sheet_6: 1089085868
+      slime_boss_anim-Sheet_7: 970732782
+      slime_boss_anim-Sheet_8: 851483437
+      slime_boss_anim-Sheet_9: -1800019141
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

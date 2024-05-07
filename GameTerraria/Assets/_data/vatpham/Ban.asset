@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
   m_Name: Ban
   m_EditorClassIdentifier: 
-  tileName: Ban
+  tileName: "B\xE0n"
   wallVariant: {fileID: 0}
   tileSprites:
   - {fileID: 54159037, guid: 84d2a2c57d544694eba9772795648e55, type: 3}
-  isImpact: 0
+  isImpact: 1
   tileDrop: {fileID: 11400000}
   toolToBreak: 0
   isNaturallyPlace: 0
+  type: 0

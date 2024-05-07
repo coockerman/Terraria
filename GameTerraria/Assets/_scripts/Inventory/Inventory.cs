@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
@@ -122,6 +118,9 @@ public class Inventory : MonoBehaviour
         objPickSlot.GetComponent<Image>().color = Color.clear;
         pickUISlot = objPickSlot;
         pickSlot = null;
+
+        //setupTrash
+        inventoryUI.transform.GetChild(0).GetChild(3).GetChild(0).GetComponent<Button>().onClick.AddListener(() => { SelectTrash(); });
     }
     void UpdateInventoryUI()
     {
@@ -426,9 +425,27 @@ public class Inventory : MonoBehaviour
         {
             if (inventorySlots[i, j] != null)
             {
-                InventorySlot t = pickSlot;
-                pickSlot = inventorySlots[i, j];
-                inventorySlots[i, j] = t;
+                if(pickSlot.item.nameTool.ToString() == inventorySlots[i, j].item.nameTool.ToString())
+                {
+                    inventorySlots[i, j].quantity += pickSlot.quantity;
+
+                    if (inventorySlots[i, j].quantity >= inventorySlots[i,j].stackLimit)
+                    {
+                        int c = inventorySlots[i, j].stackLimit - inventorySlots[i, j].quantity;
+                        inventorySlots[i, j].quantity = inventorySlots[i, j].stackLimit;
+                        pickSlot.quantity = c;
+                    }
+                    else
+                    {
+                        pickSlot = null;
+                    }
+                }
+                else
+                {
+                    InventorySlot t = pickSlot;
+                    pickSlot = inventorySlots[i, j];
+                    inventorySlots[i, j] = t;
+                }
             }
             else
             {
@@ -453,9 +470,27 @@ public class Inventory : MonoBehaviour
         {
             if (BanCheTaoSlot[i] != null)
             {
-                InventorySlot t = pickSlot;
-                pickSlot = BanCheTaoSlot[i];
-                BanCheTaoSlot[i] = t;
+                if (pickSlot.item.nameTool.ToString() == BanCheTaoSlot[i].item.nameTool.ToString())
+                {
+                    BanCheTaoSlot[i].quantity += pickSlot.quantity;
+
+                    if (BanCheTaoSlot[i].quantity >= BanCheTaoSlot[i].stackLimit)
+                    {
+                        int c = BanCheTaoSlot[i].stackLimit - BanCheTaoSlot[i].quantity;
+                        BanCheTaoSlot[i].quantity = BanCheTaoSlot[i].stackLimit;
+                        pickSlot.quantity = c;
+                    }
+                    else
+                    {
+                        pickSlot = null;
+                    }
+                }
+                else
+                {
+                    InventorySlot t = pickSlot;
+                    pickSlot = BanCheTaoSlot[i];
+                    BanCheTaoSlot[i] = t;
+                }
             }
             else
             {
@@ -492,6 +527,14 @@ public class Inventory : MonoBehaviour
                 }
                 KetQuaBanCheTao = null;
             }
+        }
+        UpdateInventoryUI();
+    }
+    void SelectTrash()
+    {
+        if(pickSlot != null)
+        {
+            pickSlot = null;
         }
         UpdateInventoryUI();
     }

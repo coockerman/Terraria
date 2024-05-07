@@ -20,23 +20,38 @@ public class EnemyClass : MonoBehaviour
     float moveChangeTime;
     float countMove;
     int statusMove = 0;
-    Animation anim;
-    AnimationClip animIdle;
-    AnimationClip animDie;
+    int maEnemy;
+    Animator animator;
+    
     private void Start()
     {
         countDelayAttack = DelayAttack;
         moveChangeTime = Random.Range(2, 4);
         countMove = moveChangeTime;
-        anim = GetComponent<Animation>();
-        if (animIdle != null)
-            anim.clip = animIdle;
+        animator = GetComponent<Animator>();
+        animator.SetInteger("MaEnemy", maEnemy);
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = maEnemy;
     }
     private void Update()
     {
         if (isDie) return;
         XuLyAttack();
         AutoMove();
+    }
+    public void Init(SlimeData slimeData, PlayerHealth playerHealth, GameObject tileDrop)
+    {
+        this.playerHealth = playerHealth;
+        gameObject.GetComponent<SpriteRenderer>().sprite = null;
+        itemEnemy = new ItemClass(slimeData.vatpham);
+        layerPlayer = slimeData.layerPlayer;
+        nameEnemy = slimeData.nameEnemy;
+        maxHP = slimeData.maxHP;
+        countHP = maxHP;
+        attack = slimeData.attack;
+        speed = slimeData.speed;
+        DelayAttack = slimeData.attackSpeed;
+        this.tileDrop = tileDrop;
+        this.maEnemy = slimeData.MaEnemy;
     }
     void XuLyAttack()
     {
@@ -67,12 +82,12 @@ public class EnemyClass : MonoBehaviour
         }
         if(FootCheck())
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,0.5f));
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,1f));
         }
         float ran = Random.Range(0, 1000);
         if(ran > 995)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1));
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1.5f));
         }
     }
     void Move(int i)
@@ -95,22 +110,7 @@ public class EnemyClass : MonoBehaviour
         playerHealth.ReceiveDamage(attack);
         countDelayAttack = DelayAttack;
     }
-    public void Init(SlimeData slimeData, PlayerHealth playerHealth, GameObject tileDrop)
-    {
-        this.playerHealth = playerHealth;
-        gameObject.GetComponent<SpriteRenderer>().sprite = slimeData.sprite;
-        itemEnemy = new ItemClass(slimeData.vatpham);
-        layerPlayer = slimeData.layerPlayer;
-        nameEnemy = slimeData.nameEnemy;
-        maxHP = slimeData.maxHP;
-        countHP = maxHP;
-        attack = slimeData.attack;
-        speed = slimeData.speed;
-        DelayAttack = slimeData.attackSpeed;
-        this.tileDrop = tileDrop;
-        this.animIdle = slimeData.animIdle;
-        this.animDie = slimeData.animDie;
-    }
+    
     public void ReceiveDamage(int damage)
     {
         if (isDie) return;
@@ -125,9 +125,7 @@ public class EnemyClass : MonoBehaviour
     void Die()
     {
         if (isDie) return;
-        if (animDie != null)
-            
-            anim.clip = animDie;
+        animator.SetBool("IsDie", true);
 
         StartCoroutine(TimeWaitDie(1));
     }

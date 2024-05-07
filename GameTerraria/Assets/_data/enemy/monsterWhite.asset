@@ -22,5 +22,4 @@ MonoBehaviour:
   speed: 2
   attackSpeed: 3
   vatpham: {fileID: 11400000, guid: a839043f4d7668c46a2fca7fa4b93fb3, type: 2}
-  animIdle: {fileID: 7400000, guid: 406a8b353a8b70e4494bc632b2468660, type: 2}
-  animDie: {fileID: 7400000, guid: 88d4cc4f23df07f4bad7923adb136d66, type: 2}
+  MaEnemy: 3

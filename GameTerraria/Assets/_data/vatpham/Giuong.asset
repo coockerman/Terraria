@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
   m_Name: Giuong
   m_EditorClassIdentifier: 
-  tileName: giuong
+  tileName: "Gi\u01B0\u1EDDng"
   wallVariant: {fileID: 0}
   tileSprites:
   - {fileID: -127984616, guid: 84d2a2c57d544694eba9772795648e55, type: 3}
@@ -20,3 +20,4 @@ MonoBehaviour:
   tileDrop: {fileID: 11400000}
   toolToBreak: 0
   isNaturallyPlace: 0
+  type: 0

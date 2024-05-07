@@ -13,6 +13,5 @@ public class SlimeData : ScriptableObject
     public float speed;
     public float attackSpeed;
     public TileClass vatpham;
-    public AnimationClip animIdle;
-    public AnimationClip animDie;
+    public int MaEnemy;
 }

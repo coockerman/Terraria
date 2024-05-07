@@ -16,4 +16,9 @@ MonoBehaviour:
   sprite: {fileID: -134251840, guid: d709b2c44c942f64bb4a0d567dba55f1, type: 3}
   weaponType: 1
   dame: 6
-  nguyenLieuCheTao: []
+  phamvi: 4
+  nguyenLieuCheTao:
+  - {fileID: 11400000, guid: 369da00fdc32441409efe9ff16194d62, type: 2}
+  - {fileID: 11400000, guid: dc98a9e04b933f6418057eb94f0fec7e, type: 2}
+  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
+  bow: {fileID: 0}

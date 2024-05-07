@@ -9,7 +9,8 @@ public class ItemEnum
         block,
         tool,
         weapon,
-        ingredient
+        ingredient,
+        medicine
     }
     public enum ToolType
     {

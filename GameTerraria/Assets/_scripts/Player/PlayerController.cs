@@ -116,18 +116,34 @@ public class PlayerController : MonoBehaviour
 
         hotBarSelector.transform.position = inventory.hotbarUISlot[selectSlotIndex].transform.position;
         //set selected item
+        if(hit)
+        {
+            if (selectedItem != null)
+            {
+                if (selectedItem.weaponType == ItemEnum.WeaponType.sword)
+                {
+                    if(Vector2.Distance(transform.position, mousePosFloat) <= selectedItem.phamvi)
+                    {
+                        FindAttackEnemy(false);
+                    }
+                }
+                if (selectedItem.weaponType == ItemEnum.WeaponType.bow)
+                {
+                    if (Vector2.Distance(transform.position, mousePosFloat) <= selectedItem.phamvi)
+                    {
+                        FindAttackEnemy(true);
+                    }
+                }
+            }
+        }
         
-
+        
         if (Vector2.Distance(transform.position, mousePosFloat) <= playerRangeMax)
         {
             if (hit)
             {
                 if(selectedItem != null)
                 {
-                    if (selectedItem.weaponType == ItemEnum.WeaponType.sword)
-                    {
-                        FindAttackEnemy();
-                    }
                     terrainGeneration.BreakTile(mousePos.x, mousePos.y, selectedItem);
                 }
 
@@ -140,6 +156,10 @@ public class PlayerController : MonoBehaviour
                     {
                         if (terrainGeneration.CheckTile(selectedItem.tile, mousePos.x, mousePos.y, selectedItem.tile.isNaturallyPlace))
                             inventory.RemoveItem(selectedItem);
+                    }else if(selectedItem.itemType == ItemEnum.ItemType.medicine)
+                    {
+                        gameObject.GetComponent<PlayerHealth>().RecoverHP(selectedItem.hpRecover);
+                        inventory.RemoveItem(selectedItem);
                     }
                 }
             }
@@ -157,7 +177,6 @@ public class PlayerController : MonoBehaviour
             selectedItem = new ItemClass();
             selectedItem = null;
             hotBarSelector.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text = "";
-
         }
         //cap nhat sprite
         if (selectedItem != null)
@@ -177,22 +196,31 @@ public class PlayerController : MonoBehaviour
             handHolder.GetComponent<SpriteRenderer>().sprite = null;
         }
     }
-    void FindAttackEnemy()
+    void FindAttackEnemy(bool isBow)
     {
-        foreach (var item in enemyController.listEnemy)
+        foreach (GameObject enemy in enemyController.listEnemy)
         {
-            if(item != null)
+            if(enemy != null)
             {
-                float x = item.transform.position.x;
-                float y = item.transform.position.y;
-                if (Mathf.Abs(mousePosFloat.x - x) <= 1 && Mathf.Abs(mousePosFloat.y - y) <= 1)
+                if (!enemy.GetComponent<EnemyClass>().isDie)
                 {
-                    item.GetComponent<EnemyClass>().ReceiveDamage(selectedItem.weapon.dame);
+                    float x = enemy.transform.position.x;
+                    float y = enemy.transform.position.y;
+                    if (Mathf.Abs(mousePosFloat.x - x) <= 1 && Mathf.Abs(mousePosFloat.y - y) <= 1)
+                    {
+                        enemy.GetComponent<EnemyClass>().ReceiveDamage(selectedItem.weapon.dame);
+                        if (isBow)
+                        {
+                            GameObject bow = Instantiate(selectedItem.weapon.bow, transform.position, Quaternion.identity);
+                            bow.GetComponent<BowMove>().SetBowMove(new Vector2(x, y), 10);
+
+                        }
+                    }
                 }
             }
-            
         }
     }
+    
     void ActiveBag()
     {
         if (Input.GetKeyDown(KeyCode.E))

@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_2
+      name: dantuyet
       rect:
         serializedVersion: 2
         x: 202
@@ -469,6 +469,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      dantuyet: 1649431393
       dayThung: 1811434053
       genBlue: -1012516991
       genDo: 97774445
@@ -477,7 +478,6 @@ TextureImporter:
       genWhite: -1849669126
       go: 1560557863
       ingredient_10: -1532062456
-      ingredient_2: 1649431393
       ingredient_5: -1410118344
       ingredient_6: 1499417724
       thoiDong: 1049200514

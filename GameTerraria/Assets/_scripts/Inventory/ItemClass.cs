@@ -16,6 +16,8 @@ public class ItemClass
     public string nameTool;
     public Sprite sprite;
     public bool isImpact;
+    public float phamvi;
+    public float hpRecover;
     public ItemClass()
     {
         nameTool = "";
@@ -33,6 +35,8 @@ public class ItemClass
         isImpact = _tile.isImpact;
         itemType = _tile.type;
         tile = _tile;
+        if(itemType == ItemEnum.ItemType.medicine)
+            hpRecover = _tile.hpRecover;
     }
     public ItemClass(ToolClass _tool)
     {
@@ -51,5 +55,6 @@ public class ItemClass
         itemType = ItemEnum.ItemType.weapon;
         weaponType = _weapon.weaponType;
         weapon = _weapon;
+        phamvi = _weapon.phamvi;
     }
 }

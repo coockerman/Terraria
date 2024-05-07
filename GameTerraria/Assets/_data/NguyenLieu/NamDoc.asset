@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
+  m_Name: NamDoc
+  m_EditorClassIdentifier: 
+  tileName: "N\u1EA5m \u0111\u1ED9c"
+  wallVariant: {fileID: 0}
+  tileSprites:
+  - {fileID: 1980305088, guid: d2cb67d78da52304e9518e07e6276a00, type: 3}
+  isImpact: 0
+  tileDrop: {fileID: 11400000}
+  toolToBreak: 2
+  isNaturallyPlace: 0
+  type: 3
+  hpRecover: 0
