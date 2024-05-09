@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
-  m_Name: Ban
+  m_Name: ThitXienNuong
   m_EditorClassIdentifier: 
-  tileName: "B\xE0n"
+  tileName: "Th\u1ECBt xi\xEAn"
   wallVariant: {fileID: 0}
   tileSprites:
-  - {fileID: 54159037, guid: 84d2a2c57d544694eba9772795648e55, type: 3}
-  isImpact: 1
+  - {fileID: -964548874, guid: d2cb67d78da52304e9518e07e6276a00, type: 3}
+  isImpact: 0
   tileDrop: {fileID: 11400000}
-  toolToBreak: 0
+  toolToBreak: 1
   isNaturallyPlace: 0
-  type: 0
+  type: 4
   nguyenLieuCheTao:
-  - {fileID: 11400000, guid: 87f7060c72c58ca418695604d2494496, type: 2}
-  - {fileID: 11400000, guid: dc98a9e04b933f6418057eb94f0fec7e, type: 2}
-  - {fileID: 11400000, guid: 6e4e191da4622bd4faac8bf3e741372c, type: 2}
-  - {fileID: 11400000, guid: 2b89b82bd9492a94ea31fafaf18e2fb0, type: 2}
-  hpRecover: 0
+  - {fileID: 11400000, guid: 88cfbf5da70201c4c9ba3927cd172297, type: 2}
+  - {fileID: 11400000, guid: c91725fb84269e04589d5b7fd4b6c8fa, type: 2}
+  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
+  - {fileID: 11400000, guid: 41ce81ed250f77041ab32d21b820c797, type: 2}
+  hpRecover: 100

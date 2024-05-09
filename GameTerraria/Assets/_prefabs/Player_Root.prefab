@@ -517,6 +517,7 @@ GameObject:
   - component: {fileID: 3686957659485943930}
   - component: {fileID: 3596225886903399323}
   - component: {fileID: 3591498852610191497}
+  - component: {fileID: 4129376548458817665}
   m_Layer: 6
   m_Name: Player_Root
   m_TagString: Player
@@ -690,9 +691,11 @@ MonoBehaviour:
     nameTool: 
     sprite: {fileID: 0}
     isImpact: 0
+    phamvi: 0
+    hpRecover: 0
   terrainGeneration: {fileID: 0}
-  playerRangeMax: 4
-  playerRangeMin: 1
+  playerRangeMax: 1.7
+  playerRangeMin: 0.5
   mousePos: {x: 0, y: 0}
   mousePosFloat: {x: 0, y: 0}
   moveSpeed: 5
@@ -700,6 +703,7 @@ MonoBehaviour:
   onGround: 0
   hit: 0
   place: 0
+  DapKhoi: {fileID: 0}
 --- !u!114 &3686957659485943930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,20 +725,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba7918cd3ad0abf47972c5a643de839e, type: 2}
   - {fileID: 11400000, guid: d86049bec20128f4eaa3d2cb4b67cc6f, type: 2}
   - {fileID: 11400000, guid: 73c7ce1e84cc0cf469c230f1a861bd9e, type: 2}
-  - {fileID: 11400000, guid: 2b89b82bd9492a94ea31fafaf18e2fb0, type: 2}
-  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
   start_Weapon:
   - {fileID: 11400000, guid: a59d38d35bfed324fa0c120e1c10b60d, type: 2}
-  - {fileID: 11400000, guid: bb388dbb70a3a584b86aeac56768057c, type: 2}
-  - {fileID: 11400000, guid: 66918f4d5a25ca24aba5cbd25b23d0e1, type: 2}
-  - {fileID: 11400000, guid: 22002a03c9899474fbc43730b1344e21, type: 2}
-  - {fileID: 11400000, guid: de3a9b7374bfafd49aaf985a93b58d29, type: 2}
-  - {fileID: 11400000, guid: 3d32796c18720b3408953830fa8414c5, type: 2}
   inventoryUI: {fileID: 0}
   hotbarUI: {fileID: 0}
   inventorySlotPrefab: {fileID: 4835103295354655352, guid: c728c20520b1fb941adadf5f6c9c2b65, type: 3}
   inventoryWidth: 10
-  inventoryHeight: 3
+  inventoryHeight: 4
   hotbarUISlot: []
   pickUISlot: {fileID: 0}
   ListAllWeapon:
@@ -742,6 +739,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 22002a03c9899474fbc43730b1344e21, type: 2}
   - {fileID: 11400000, guid: a59d38d35bfed324fa0c120e1c10b60d, type: 2}
   - {fileID: 11400000, guid: 66918f4d5a25ca24aba5cbd25b23d0e1, type: 2}
+  - {fileID: 11400000, guid: 3d32796c18720b3408953830fa8414c5, type: 2}
+  - {fileID: 11400000, guid: de3a9b7374bfafd49aaf985a93b58d29, type: 2}
   ListAllTool:
   - {fileID: 11400000, guid: 85ec972a0fa227f4fb4c5c536d7550fe, type: 2}
   - {fileID: 11400000, guid: 3b9db63c8fb4f1c41b826f72c0bdaa19, type: 2}
@@ -759,6 +758,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e9cd87efbd4a02e49b709e0fc73fd2b6, type: 2}
   - {fileID: 11400000, guid: b2dbf55ee17a1a943adc7e5144a46f86, type: 2}
   - {fileID: 11400000, guid: e9dc68d9384935a479534d92529d1711, type: 2}
+  ListAllTile:
+  - {fileID: 11400000, guid: 9b1b1f9dd80e4274cb40d5bdc8873af7, type: 2}
+  - {fileID: 11400000, guid: ce490271c19dcd143a2f70a002a05636, type: 2}
+  - {fileID: 11400000, guid: 09645cbcc984c1445b55d2c1500eefe3, type: 2}
+  - {fileID: 11400000, guid: d86049bec20128f4eaa3d2cb4b67cc6f, type: 2}
+  - {fileID: 11400000, guid: 73c7ce1e84cc0cf469c230f1a861bd9e, type: 2}
+  - {fileID: 11400000, guid: ba7918cd3ad0abf47972c5a643de839e, type: 2}
 --- !u!95 &3596225886903399323
 Animator:
   serializedVersion: 5
@@ -792,7 +798,105 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5337fa2c2d84d44a77194facb445f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPmax: 15
+  HPmax: 100
+  UIHP: {fileID: 0}
+  setting: {fileID: 0}
+--- !u!82 &4129376548458817665
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305489685828651177}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7291034502477173828
 GameObject:
   m_ObjectHideFlags: 0

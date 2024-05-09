@@ -538,13 +538,16 @@ public class TerrainGeneration : MonoBehaviour
     }
     TileClass GetTileFromWorld(int x, int y)
     {
-        if (world_ForegroundTiles[x, y] != null)
+        if(x>=0&&x<=worldSize-1)
         {
-            return world_ForegroundTiles[x, y];
-        }
-        else if (world_BackgroundTiles[x, y] != null)
-        {
-            return world_BackgroundTiles[x, y];
+            if (world_ForegroundTiles[x, y] != null)
+            {
+                return world_ForegroundTiles[x, y];
+            }
+            else if (world_BackgroundTiles[x, y] != null)
+            {
+                return world_BackgroundTiles[x, y];
+            }
         }
         return null;
     }

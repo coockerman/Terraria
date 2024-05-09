@@ -13,6 +13,7 @@ public class TileClass : ScriptableObject
     public ItemEnum.ToolType toolToBreak;
     public bool isNaturallyPlace = false;
     public ItemEnum.ItemType type;
+    public TileClass[] nguyenLieuCheTao;
     public float hpRecover;
 
     public static TileClass CreateInstance(TileClass tileClass, bool isNaturallyPlace)
@@ -31,6 +32,7 @@ public class TileClass : ScriptableObject
         this.tileDrop = tileClass.tileDrop;
         this.toolToBreak = tileClass.toolToBreak;
         this.isNaturallyPlace= isNaturallyPlace;
+        this.nguyenLieuCheTao = tileClass.nguyenLieuCheTao;
         this.hpRecover = tileClass.hpRecover;
     }
 }

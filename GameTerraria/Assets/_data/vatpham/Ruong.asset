@@ -21,3 +21,9 @@ MonoBehaviour:
   toolToBreak: 0
   isNaturallyPlace: 0
   type: 0
+  nguyenLieuCheTao:
+  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
+  - {fileID: 11400000, guid: a424001a89df17545a9f47fb282368f5, type: 2}
+  - {fileID: 11400000, guid: 6e4e191da4622bd4faac8bf3e741372c, type: 2}
+  - {fileID: 11400000, guid: 2b89b82bd9492a94ea31fafaf18e2fb0, type: 2}
+  hpRecover: 0

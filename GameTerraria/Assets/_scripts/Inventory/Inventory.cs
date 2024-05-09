@@ -25,6 +25,7 @@ public class Inventory : MonoBehaviour
 
     public WeaponClass[] ListAllWeapon;
     public ToolClass[] ListAllTool;
+    public TileClass[] ListAllTile;
     InventorySlot[] BanCheTaoSlot;
     InventorySlot KetQuaBanCheTao;
 
@@ -185,7 +186,7 @@ public class Inventory : MonoBehaviour
             pickUISlot.transform.GetChild(0).GetComponent<Image>().enabled = true;
             pickUISlot.transform.GetChild(0).GetComponent<Image>().sprite = pickSlot.item.sprite;
 
-            pickUISlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = pickSlot.quantity.ToString();
+            pickUISlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = pickSlot.item.nameTool.ToString();
             pickUISlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().enabled = true;
             pickUISlot.gameObject.SetActive(true);
         }
@@ -234,6 +235,7 @@ public class Inventory : MonoBehaviour
     {
         CheckCheTaoWeapon();
         CheckCheTaoTool();
+        CheckCheTaoTile();
         if (KetQuaBanCheTao != null)
         {
             UiKetQuaBanCheTao.GetComponent<Button>().onClick.AddListener(() => { SelectKetQuaBanCheTao(); });
@@ -318,6 +320,45 @@ public class Inventory : MonoBehaviour
             if (isCheck2 == true)
             {
                 KetQuaBanCheTao = new InventorySlot(new ItemClass(ListAllTool[i]));
+                return;
+            }
+            else
+            {
+                KetQuaBanCheTao = null;
+            }
+        }
+    }
+    void CheckCheTaoTile()
+    {
+        for (int i = 0; i < ListAllTile.Length; i++)
+        {
+            bool isCheck2 = true;
+            foreach (TileClass b in ListAllTile[i].nguyenLieuCheTao)
+            {
+                bool isCheck = false;
+                foreach (InventorySlot a in BanCheTaoSlot)
+                {
+                    Debug.Log(isCheck);
+                    if (b != null && a != null)
+                    {
+                        if (b.tileName.ToString() == a.item.nameTool.ToString())
+                        {
+                            isCheck = true;
+
+                            break;
+                        }
+                    }
+                }
+                if (isCheck == false)
+                {
+                    isCheck2 = false;
+                    break;
+                }
+            }
+
+            if (isCheck2 == true)
+            {
+                KetQuaBanCheTao = new InventorySlot(new ItemClass(ListAllTile[i]));
                 return;
             }
             else
@@ -526,6 +567,10 @@ public class Inventory : MonoBehaviour
                 {
                     RemoveDoCheTao(KetQuaBanCheTao.item.tool.nguyenLieuCheTao);
                 }
+                else if (KetQuaBanCheTao.item.tile != null)
+                {
+                    RemoveDoCheTao(KetQuaBanCheTao.item.tile.nguyenLieuCheTao);
+                }
                 KetQuaBanCheTao = null;
             }
         }
@@ -563,15 +608,28 @@ public class Inventory : MonoBehaviour
                 newObj.AddComponent<Button>().onClick.AddListener(() => { SetupInputAndOutputTool(tool); });
             }
         }
+        foreach (TileClass tile in ListAllTile)
+        {
+            if (tile != null)
+            {
+                GameObject newObj = Instantiate(inventorySlotPrefab, inventoryUI.transform.GetChild(1).GetChild(1));
+                newObj.transform.GetChild(0).GetComponent<Image>().sprite = tile.tileSprites[0];
+                newObj.transform.GetChild(1).gameObject.SetActive(false);
+                newObj.AddComponent<Button>().onClick.AddListener(() => { SetupInputAndOutputTile(tile); });
+            }
+        }
     }
     void SetupInputAndOutputWeapon(WeaponClass weapon)
     {
         inventoryUI.transform.GetChild(1).GetChild(3).GetChild(0).GetChild(0).GetComponent<Image>().sprite = weapon.sprite;
-        for (int i = 0; i < weapon.nguyenLieuCheTao.Length; i++)
+        inventoryUI.transform.GetChild(1).GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().text = weapon.nameWeapon;
+
+        for (int i = 0; i < 4; i++)
         {
-            if (weapon.nguyenLieuCheTao[i] != null)
+            if (i < weapon.nguyenLieuCheTao.Length)
             {
-                inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = weapon.nguyenLieuCheTao[i].tileSprites[0];
+                if (weapon.nguyenLieuCheTao[i] != null)
+                    inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = weapon.nguyenLieuCheTao[i].tileSprites[0];
             }
             else
             {
@@ -583,18 +641,37 @@ public class Inventory : MonoBehaviour
     void SetupInputAndOutputTool(ToolClass tool)
     {
         inventoryUI.transform.GetChild(1).GetChild(3).GetChild(0).GetChild(0).GetComponent<Image>().sprite = tool.sprite;
-        for (int i = 0; i < tool.nguyenLieuCheTao.Length; i++)
+        inventoryUI.transform.GetChild(1).GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().text = tool.nameTool;
+        for (int i = 0; i < 4; i++)
         {
-            if (tool.nguyenLieuCheTao[i] != null)
+            if (i < tool.nguyenLieuCheTao.Length)
             {
-                inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = tool.nguyenLieuCheTao[i].tileSprites[0];
+                if(tool.nguyenLieuCheTao[i] != null) 
+                    inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = tool.nguyenLieuCheTao[i].tileSprites[0];
             }
             else
             {
                 inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = null;
             }
         }
+    }
+    void SetupInputAndOutputTile(TileClass tile)
+    {
+        inventoryUI.transform.GetChild(1).GetChild(3).GetChild(0).GetChild(0).GetComponent<Image>().sprite = tile.tileSprites[0];
+        for (int i = 0; i < 4; i++)
+        {
+            if (i < tile.nguyenLieuCheTao.Length)
+            {
+                if(tile.nguyenLieuCheTao[i] != null)
+                inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = tile.nguyenLieuCheTao[i].tileSprites[0];
+                inventoryUI.transform.GetChild(1).GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().text = tile.tileName;
 
+            }
+            else
+            {
+                inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = null;
+            }
+        }
     }
     public void SetupStatusHD()
     {

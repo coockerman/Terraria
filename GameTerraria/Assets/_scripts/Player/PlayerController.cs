@@ -35,12 +35,18 @@ public class PlayerController : MonoBehaviour
     float horizontal;
     float vertical;
 
+    AudioSource audioSourcePlayer;
+    public AudioClip DapKhoi;
+    public AudioClip Xay;
+    public AudioClip Danh;
+
     [HideInInspector]
     public Vector2 spawnPos { get; set; }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        audioSourcePlayer = GetComponent<AudioSource>();
     }
     public void Spawn()
     {
@@ -116,13 +122,13 @@ public class PlayerController : MonoBehaviour
 
         hotBarSelector.transform.position = inventory.hotbarUISlot[selectSlotIndex].transform.position;
         //set selected item
-        if(hit)
+        if (hit)
         {
             if (selectedItem != null)
             {
                 if (selectedItem.weaponType == ItemEnum.WeaponType.sword)
                 {
-                    if(Vector2.Distance(transform.position, mousePosFloat) <= selectedItem.phamvi)
+                    if (Vector2.Distance(transform.position, mousePosFloat) <= selectedItem.phamvi)
                     {
                         FindAttackEnemy(false);
                     }
@@ -136,17 +142,17 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        
-        
+
+
         if (Vector2.Distance(transform.position, mousePosFloat) <= playerRangeMax)
         {
             if (hit)
             {
-                if(selectedItem != null)
+                if (selectedItem != null)
                 {
+                    audioSourcePlayer.PlayOneShot(DapKhoi);
                     terrainGeneration.BreakTile(mousePos.x, mousePos.y, selectedItem);
                 }
-
             }
             else if (place && Vector2.Distance(transform.position, mousePosFloat) >= playerRangeMin)
             {
@@ -154,9 +160,11 @@ public class PlayerController : MonoBehaviour
                 {
                     if (selectedItem.itemType == ItemEnum.ItemType.block)
                     {
+                        audioSourcePlayer.PlayOneShot(Xay);
                         if (terrainGeneration.CheckTile(selectedItem.tile, mousePos.x, mousePos.y, selectedItem.tile.isNaturallyPlace))
                             inventory.RemoveItem(selectedItem);
-                    }else if(selectedItem.itemType == ItemEnum.ItemType.medicine)
+                    }
+                    else if (selectedItem.itemType == ItemEnum.ItemType.medicine)
                     {
                         gameObject.GetComponent<PlayerHealth>().RecoverHP(selectedItem.hpRecover);
                         inventory.RemoveItem(selectedItem);
@@ -200,7 +208,7 @@ public class PlayerController : MonoBehaviour
     {
         foreach (GameObject enemy in enemyController.listEnemy)
         {
-            if(enemy != null)
+            if (enemy != null)
             {
                 if (!enemy.GetComponent<EnemyClass>().isDie)
                 {
@@ -209,6 +217,7 @@ public class PlayerController : MonoBehaviour
                     if (Mathf.Abs(mousePosFloat.x - x) <= 1 && Mathf.Abs(mousePosFloat.y - y) <= 1)
                     {
                         enemy.GetComponent<EnemyClass>().ReceiveDamage(selectedItem.weapon.dame);
+                        audioSourcePlayer.PlayOneShot(Danh);
                         if (isBow)
                         {
                             GameObject bow = Instantiate(selectedItem.weapon.bow, transform.position, Quaternion.identity);
@@ -220,7 +229,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
+
     void ActiveBag()
     {
         if (Input.GetKeyDown(KeyCode.E))

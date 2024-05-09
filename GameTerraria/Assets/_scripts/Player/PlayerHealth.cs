@@ -16,7 +16,13 @@ public class PlayerHealth : MonoBehaviour
         countHP = HPmax;
         UpdateUIHP();
     }
-
+    private void Update()
+    {
+        if(transform.position.y < -100)
+        {
+            Die();
+        }
+    }
     public void ReceiveDamage(float HP)
     {
         if (isDie) return;
