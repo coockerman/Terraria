@@ -48,6 +48,7 @@ public class Inventory : MonoBehaviour
         SetupUI();
         UpdateInventoryUI();
         StartAddItem();
+        SetupUIHD();
     }
     void Update()
     {
@@ -537,5 +538,70 @@ public class Inventory : MonoBehaviour
             pickSlot = null;
         }
         UpdateInventoryUI();
+    }
+
+    
+    void SetupUIHD()
+    {
+        foreach(WeaponClass weapon in ListAllWeapon)
+        {
+            if (weapon != null)
+            {
+                GameObject newObj = Instantiate(inventorySlotPrefab, inventoryUI.transform.GetChild(1).GetChild(1));
+                newObj.transform.GetChild(0).GetComponent<Image>().sprite = weapon.sprite;
+                newObj.transform.GetChild(1).gameObject.SetActive(false);
+                newObj.AddComponent<Button>().onClick.AddListener(() => { SetupInputAndOutputWeapon(weapon); });
+            }
+        }
+        foreach (ToolClass tool in ListAllTool)
+        {
+            if (tool != null)
+            {
+                GameObject newObj = Instantiate(inventorySlotPrefab, inventoryUI.transform.GetChild(1).GetChild(1));
+                newObj.transform.GetChild(0).GetComponent<Image>().sprite = tool.sprite;
+                newObj.transform.GetChild(1).gameObject.SetActive(false);
+                newObj.AddComponent<Button>().onClick.AddListener(() => { SetupInputAndOutputTool(tool); });
+            }
+        }
+    }
+    void SetupInputAndOutputWeapon(WeaponClass weapon)
+    {
+        inventoryUI.transform.GetChild(1).GetChild(3).GetChild(0).GetChild(0).GetComponent<Image>().sprite = weapon.sprite;
+        for (int i = 0; i < weapon.nguyenLieuCheTao.Length; i++)
+        {
+            if (weapon.nguyenLieuCheTao[i] != null)
+            {
+                inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = weapon.nguyenLieuCheTao[i].tileSprites[0];
+            }
+            else
+            {
+                inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = null;
+            }
+        }
+
+    }
+    void SetupInputAndOutputTool(ToolClass tool)
+    {
+        inventoryUI.transform.GetChild(1).GetChild(3).GetChild(0).GetChild(0).GetComponent<Image>().sprite = tool.sprite;
+        for (int i = 0; i < tool.nguyenLieuCheTao.Length; i++)
+        {
+            if (tool.nguyenLieuCheTao[i] != null)
+            {
+                inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = tool.nguyenLieuCheTao[i].tileSprites[0];
+            }
+            else
+            {
+                inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = null;
+            }
+        }
+
+    }
+    public void SetupStatusHD()
+    {
+        inventoryUI.transform.GetChild(1).gameObject.SetActive(!inventoryUI.transform.GetChild(1).gameObject.activeSelf);
+    }
+    public void SetupStatusHD(bool isActive)
+    {
+        inventoryUI.transform.GetChild(1).gameObject.SetActive(isActive);
     }
 }

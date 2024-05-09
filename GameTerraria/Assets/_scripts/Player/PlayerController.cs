@@ -226,8 +226,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             isInventoryShow = !isInventoryShow;
+            inventory.SetupStatusHD(false);
+            inventory.inventoryUI.SetActive(isInventoryShow);
         }
-        inventory.inventoryUI.SetActive(isInventoryShow);
     }
     void GetMousePos()
     {
