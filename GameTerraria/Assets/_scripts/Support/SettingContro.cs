@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SettingContro : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class SettingContro : MonoBehaviour
     public GameObject BoxThua;
     public AudioSource[] audioSource;
     public GameObject btnMusic;
+    public Color OnMusicColor;
+    public Color OffMusicColor;
     bool isMusic = true;
 
     private void Start()
@@ -44,7 +47,7 @@ public class SettingContro : MonoBehaviour
     {
         if(isMusic)
         {
-            btnMusic.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+            btnMusic.GetComponent<Image>().color = OnMusicColor;
             foreach (AudioSource audio in audioSource)
             {
                 audio.volume = 1;
@@ -52,7 +55,7 @@ public class SettingContro : MonoBehaviour
         }
         else
         {
-            btnMusic.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 100);
+            btnMusic.GetComponent<Image>().color = OffMusicColor;
             foreach (AudioSource audio in audioSource)
             {
                 audio.volume = 0;

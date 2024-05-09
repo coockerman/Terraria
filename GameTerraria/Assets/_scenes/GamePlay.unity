@@ -668,6 +668,8 @@ MonoBehaviour:
   audioSource:
   - {fileID: 2122066562}
   btnMusic: {fileID: 262947781}
+  OnMusicColor: {r: 1, g: 1, b: 1, a: 1}
+  OffMusicColor: {r: 1, g: 1, b: 1, a: 0.39215687}
 --- !u!1 &214278597
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +914,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 262947784}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 188390388}
+        m_TargetAssemblyTypeName: SettingContro, Assembly-CSharp
+        m_MethodName: ChangeStatusMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &262947784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4815,6 +4829,38 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 287576885}
+    - target: {fileID: 3686957659485943930, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
+      propertyPath: start_Tile.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686957659485943930, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
+      propertyPath: start_Tile.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b89b82bd9492a94ea31fafaf18e2fb0, type: 2}
+    - target: {fileID: 3686957659485943930, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
+      propertyPath: start_Tile.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 41ce81ed250f77041ab32d21b820c797, type: 2}
+    - target: {fileID: 3686957659485943930, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
+      propertyPath: start_Tile.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e4e191da4622bd4faac8bf3e741372c, type: 2}
+    - target: {fileID: 3686957659485943930, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
+      propertyPath: start_Tile.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: a424001a89df17545a9f47fb282368f5, type: 2}
+    - target: {fileID: 3686957659485943930, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
+      propertyPath: start_Tile.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 369da00fdc32441409efe9ff16194d62, type: 2}
+    - target: {fileID: 3686957659485943930, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
+      propertyPath: start_Tile.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: dc98a9e04b933f6418057eb94f0fec7e, type: 2}
+    - target: {fileID: 3686957659485943930, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
+      propertyPath: start_Tile.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
     - target: {fileID: 6305489685828651177, guid: ff4874a5ed609fa499424178c8ee454a, type: 3}
       propertyPath: m_Name
       value: Player_Root

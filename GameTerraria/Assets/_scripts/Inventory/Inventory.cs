@@ -233,9 +233,8 @@ public class Inventory : MonoBehaviour
     }
     void XuLyCheTao()
     {
-        CheckCheTaoWeapon();
-        CheckCheTaoTool();
-        CheckCheTaoTile();
+            CheckCheTaoWeapon();
+
         if (KetQuaBanCheTao != null)
         {
             UiKetQuaBanCheTao.GetComponent<Button>().onClick.AddListener(() => { SelectKetQuaBanCheTao(); });
@@ -286,6 +285,8 @@ public class Inventory : MonoBehaviour
             else
             {
                 KetQuaBanCheTao = null;
+                CheckCheTaoTool();
+
             }
         }
     }
@@ -325,6 +326,8 @@ public class Inventory : MonoBehaviour
             else
             {
                 KetQuaBanCheTao = null;
+                CheckCheTaoTile();
+
             }
         }
     }
@@ -467,11 +470,11 @@ public class Inventory : MonoBehaviour
         {
             if (inventorySlots[i, j] != null)
             {
-                if(pickSlot.item.nameTool.ToString() == inventorySlots[i, j].item.nameTool.ToString())
+                if (pickSlot.item.nameTool.ToString() == inventorySlots[i, j].item.nameTool.ToString())
                 {
                     inventorySlots[i, j].quantity += pickSlot.quantity;
 
-                    if (inventorySlots[i, j].quantity >= inventorySlots[i,j].stackLimit)
+                    if (inventorySlots[i, j].quantity >= inventorySlots[i, j].stackLimit)
                     {
                         int c = inventorySlots[i, j].stackLimit - inventorySlots[i, j].quantity;
                         inventorySlots[i, j].quantity = inventorySlots[i, j].stackLimit;
@@ -578,17 +581,17 @@ public class Inventory : MonoBehaviour
     }
     void SelectTrash()
     {
-        if(pickSlot != null)
+        if (pickSlot != null)
         {
             pickSlot = null;
         }
         UpdateInventoryUI();
     }
 
-    
+
     void SetupUIHD()
     {
-        foreach(WeaponClass weapon in ListAllWeapon)
+        foreach (WeaponClass weapon in ListAllWeapon)
         {
             if (weapon != null)
             {
@@ -646,7 +649,7 @@ public class Inventory : MonoBehaviour
         {
             if (i < tool.nguyenLieuCheTao.Length)
             {
-                if(tool.nguyenLieuCheTao[i] != null) 
+                if (tool.nguyenLieuCheTao[i] != null)
                     inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = tool.nguyenLieuCheTao[i].tileSprites[0];
             }
             else
@@ -662,8 +665,8 @@ public class Inventory : MonoBehaviour
         {
             if (i < tile.nguyenLieuCheTao.Length)
             {
-                if(tile.nguyenLieuCheTao[i] != null)
-                inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = tile.nguyenLieuCheTao[i].tileSprites[0];
+                if (tile.nguyenLieuCheTao[i] != null)
+                    inventoryUI.transform.GetChild(1).GetChild(2).GetChild(i).GetChild(0).GetComponent<Image>().sprite = tile.nguyenLieuCheTao[i].tileSprites[0];
                 inventoryUI.transform.GetChild(1).GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().text = tile.tileName;
 
             }
