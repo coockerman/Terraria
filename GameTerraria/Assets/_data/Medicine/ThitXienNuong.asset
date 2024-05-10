@@ -22,8 +22,8 @@ MonoBehaviour:
   isNaturallyPlace: 0
   type: 4
   nguyenLieuCheTao:
-  - {fileID: 11400000, guid: 88cfbf5da70201c4c9ba3927cd172297, type: 2}
+  - {fileID: 11400000, guid: 9b1b1f9dd80e4274cb40d5bdc8873af7, type: 2}
   - {fileID: 11400000, guid: c91725fb84269e04589d5b7fd4b6c8fa, type: 2}
-  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
+  - {fileID: 11400000, guid: 584cddbafcf99d0459fbd8ddb39b8643, type: 2}
   - {fileID: 11400000, guid: 41ce81ed250f77041ab32d21b820c797, type: 2}
-  hpRecover: 100
+  hpRecover: 200

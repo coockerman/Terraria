@@ -233,7 +233,7 @@ public class Inventory : MonoBehaviour
     }
     void XuLyCheTao()
     {
-            CheckCheTaoWeapon();
+        CheckCheTaoWeapon();
 
         if (KetQuaBanCheTao != null)
         {
@@ -253,9 +253,12 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < ListAllWeapon.Length; i++)
         {
+            if (ListAllWeapon[i].nguyenLieuCheTao.Length != CountBanCheTao())
+                continue;
             bool isCheck2 = true;
             foreach (TileClass b in ListAllWeapon[i].nguyenLieuCheTao)
             {
+
                 bool isCheck = false;
                 foreach (InventorySlot a in BanCheTaoSlot)
                 {
@@ -282,18 +285,16 @@ public class Inventory : MonoBehaviour
                 KetQuaBanCheTao = new InventorySlot(new ItemClass(ListAllWeapon[i]));
                 return;
             }
-            else
-            {
-                KetQuaBanCheTao = null;
-                CheckCheTaoTool();
 
-            }
         }
+        CheckCheTaoTool();
     }
     void CheckCheTaoTool()
     {
         for (int i = 0; i < ListAllTool.Length; i++)
         {
+            if (ListAllTool[i].nguyenLieuCheTao.Length != CountBanCheTao())
+                continue;
             bool isCheck2 = true;
             foreach (TileClass b in ListAllTool[i].nguyenLieuCheTao)
             {
@@ -323,18 +324,15 @@ public class Inventory : MonoBehaviour
                 KetQuaBanCheTao = new InventorySlot(new ItemClass(ListAllTool[i]));
                 return;
             }
-            else
-            {
-                KetQuaBanCheTao = null;
-                CheckCheTaoTile();
-
-            }
         }
+        CheckCheTaoTile();
     }
     void CheckCheTaoTile()
     {
         for (int i = 0; i < ListAllTile.Length; i++)
         {
+            if (ListAllTile[i].nguyenLieuCheTao.Length != CountBanCheTao())
+                continue;
             bool isCheck2 = true;
             foreach (TileClass b in ListAllTile[i].nguyenLieuCheTao)
             {
@@ -364,11 +362,18 @@ public class Inventory : MonoBehaviour
                 KetQuaBanCheTao = new InventorySlot(new ItemClass(ListAllTile[i]));
                 return;
             }
-            else
-            {
-                KetQuaBanCheTao = null;
-            }
         }
+        KetQuaBanCheTao = null;
+    }
+    int CountBanCheTao()
+    {
+        int t = 0;
+        foreach (InventorySlot i in BanCheTaoSlot)
+        {
+            if (i != null)
+                t++;
+        }
+        return t;
     }
     void RemoveDoCheTao(TileClass[] nguyenLieuXoa)
     {
@@ -507,6 +512,7 @@ public class Inventory : MonoBehaviour
                 inventorySlots[i, j] = null;
             }
         }
+        XuLyCheTao();
         UpdateInventoryUI();
     }
     void SelectItemBanCheTao(int i)

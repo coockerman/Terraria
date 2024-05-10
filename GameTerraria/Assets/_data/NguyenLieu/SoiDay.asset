@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
-  m_Name: ThuocHoiPhuc
+  m_Name: SoiDay
   m_EditorClassIdentifier: 
-  tileName: "Thu\u1ED1c h\u1ED3i ph\u1EE5c"
+  tileName: "S\u1EE3i d\xE2y"
   wallVariant: {fileID: 0}
   tileSprites:
-  - {fileID: 1535307231, guid: d2cb67d78da52304e9518e07e6276a00, type: 3}
+  - {fileID: 1811434053, guid: da1dec8df1715b1468bc45b15ff10c7c, type: 3}
   isImpact: 0
   tileDrop: {fileID: 11400000}
-  toolToBreak: 1
+  toolToBreak: 2
   isNaturallyPlace: 0
-  type: 4
-  nguyenLieuCheTao:
-  - {fileID: 11400000, guid: 88cfbf5da70201c4c9ba3927cd172297, type: 2}
-  - {fileID: 11400000, guid: 584cddbafcf99d0459fbd8ddb39b8643, type: 2}
-  hpRecover: 25
+  type: 3
+  nguyenLieuCheTao: []
+  hpRecover: 0

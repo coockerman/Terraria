@@ -192,6 +192,10 @@ public class PlayerController : MonoBehaviour
             handHolder.GetComponent<SpriteRenderer>().sprite = selectedItem.sprite;
             if (selectedItem.itemType == ItemEnum.ItemType.block)
             {
+                handHolder.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            }
+            else if(selectedItem.itemType == ItemEnum.ItemType.ingredient || selectedItem.itemType == ItemEnum.ItemType.medicine)
+            {
                 handHolder.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
             else

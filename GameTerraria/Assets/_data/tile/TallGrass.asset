@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617649a1d3ce32c418122d7004437598, type: 3}
   m_Name: TallGrass
   m_EditorClassIdentifier: 
-  tileName: "Th\u1EF1c v\u1EADt nh\u1ECF"
+  tileName: "C\xE2y c\u1ECF"
   wallVariant: {fileID: 0}
   tileSprites:
-  - {fileID: -61949175, guid: afe56363c79502040b4780592fda0e00, type: 3}
   - {fileID: -320002100, guid: afe56363c79502040b4780592fda0e00, type: 3}
   isImpact: 0
   tileDrop: {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
   toolToBreak: 0
   isNaturallyPlace: 1
   type: 0
+  nguyenLieuCheTao: []
+  hpRecover: 0

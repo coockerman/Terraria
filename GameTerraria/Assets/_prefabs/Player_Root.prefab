@@ -703,7 +703,9 @@ MonoBehaviour:
   onGround: 0
   hit: 0
   place: 0
-  DapKhoi: {fileID: 0}
+  DapKhoi: {fileID: 8300000, guid: a9a78d07b9129ce4cbd49afa4d026958, type: 3}
+  Xay: {fileID: 8300000, guid: 092270b0044719d4686f8eca3b81314e, type: 3}
+  Danh: {fileID: 8300000, guid: e1a68c4b53235b6419ff68db64c82e42, type: 3}
 --- !u!114 &3686957659485943930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,6 +727,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba7918cd3ad0abf47972c5a643de839e, type: 2}
   - {fileID: 11400000, guid: d86049bec20128f4eaa3d2cb4b67cc6f, type: 2}
   - {fileID: 11400000, guid: 73c7ce1e84cc0cf469c230f1a861bd9e, type: 2}
+  - {fileID: 11400000, guid: 2b89b82bd9492a94ea31fafaf18e2fb0, type: 2}
+  - {fileID: 11400000, guid: 41ce81ed250f77041ab32d21b820c797, type: 2}
+  - {fileID: 11400000, guid: 6e4e191da4622bd4faac8bf3e741372c, type: 2}
+  - {fileID: 11400000, guid: a424001a89df17545a9f47fb282368f5, type: 2}
+  - {fileID: 11400000, guid: 369da00fdc32441409efe9ff16194d62, type: 2}
+  - {fileID: 11400000, guid: dc98a9e04b933f6418057eb94f0fec7e, type: 2}
+  - {fileID: 11400000, guid: 28e07d9207ccf594597fdb2dc2607ff4, type: 2}
   start_Weapon:
   - {fileID: 11400000, guid: a59d38d35bfed324fa0c120e1c10b60d, type: 2}
   inventoryUI: {fileID: 0}
@@ -798,7 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5337fa2c2d84d44a77194facb445f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPmax: 100
+  HPmax: 150
   UIHP: {fileID: 0}
   setting: {fileID: 0}
 --- !u!82 &4129376548458817665
